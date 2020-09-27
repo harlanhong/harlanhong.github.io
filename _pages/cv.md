@@ -11,9 +11,9 @@ redirect_from:
 
 Education
 ======
-* M.Sc. in School of Data Science And Computer Science, Sun Yat-sen University, 2018 - Now
+* M.E. in School of Data Science And Computer Science, Sun Yat-sen University, 2018 - Now
 
-* B.S. in School of Computer Science And Engineering, South China University of Technology, 2014 - 2018
+* B.E. in School of Computer Science And Engineering, South China University of Technology, 2014 - 2018
 
 Work experience
 ======
