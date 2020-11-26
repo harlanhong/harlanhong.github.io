@@ -10,6 +10,7 @@ redirect_from:
 
 I am currently a M.S. student in [Prof. Wei-Shi Zheng](https://www.isee-ai.cn/~zhwshi/)'s team ([The ISEE Group](https://www.isee-ai.cn)) in the School of Data Science and Computer Science at the Sun Yat-sen University. My research focuses on computer vision. Specifically, my early work was mainly about the detection of important people in images, but now I prefer to do research on videos, such as video highlight detection and video activity recognition. Before SYSU, I have completed my master supervised by [Prof. Sheng Bi](http://www2.scut.edu.cn/cs/2017/0129/c22285a327639/page.htm) in South China University of Technology where I was working on SLAM of mobile robot.
 
+
 **NEWS:**  (May 2020): Rebuttal for ECCV2020
 
 **NEWS:**  (May 2020): Received the internship offer letter of DAMO
