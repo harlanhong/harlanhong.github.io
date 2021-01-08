@@ -18,4 +18,4 @@ Humans can easily recognize the importance of people in social event images, and
 [Download paper here](http://openaccess.thecvf.com/content_CVPR_2019/papers/Li_Learning_to_Learn_Relation_for_Important_People_Detection_in_Still_CVPR_2019_paper.pdf)  
 [Download MS dataset here](https://uoe-my.sharepoint.com/:u:/g/personal/s1798461_ed_ac_uk/EYNSnmbtG2dPuP_ut-Sf2C0Boa7A9vnytWWb11jRiUS-ww?e=iUphhC)  
 [Download NCAA dataset here](https://uoe-my.sharepoint.com/:u:/g/personal/s1798461_ed_ac_uk/Ees0l-TFuWNKlheUlEK2diUBq3TaPha7-q8mLPBYCxVfNg?e=aBAwiF)  
-Recommended citation: Wei-Hong Li, Fa-Ting Hong, and Wei-Shi Zheng. Learning to learn relation for important people detection in still images. In Computer Vision and Pattern Recognition, 2019.
+Recommended citation: Wei-Hong Li*, Fa-Ting Hong*, and Wei-Shi Zheng. Learning to learn relation for important people detection in still images. In Computer Vision and Pattern Recognition, 2019.
