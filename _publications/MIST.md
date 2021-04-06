@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/MIST
 excerpt: 'In this work, we develop a multiple instance self-training framework (MIST) to efficiently refine task-specific discriminative representations with only video-level annotations.'
 date: 2021-4-05
-venue: 'IEEE International Conference on Computer Vision and Pattern Recognition. 2021.'
+venue: 'IEEE International Conference on Computer Vision and Pattern Recognition'
 paperurl: ''
 citation: 'Jia-Chang Feng, Fa-Ting Hong and Wei-Shi Zheng. “MIST: Multiple Instance Self-Training Framework for Video Anomaly Detection, Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition. 2021.'
 ---
@@ -31,5 +31,3 @@ title={MIST: Multiple Instance Self-Training Framework for Video Anomaly Detecti
 author={Feng, Jia-Chang and Hong, Fa-Ting and Zheng, Wei-Shi},
 booktitle={Proceedings of the IEEE International Conference on Computer Vision and Pattern Recognition}, year={2021}
 }
-
-https://harlanhong.github.io/publication/MIST
