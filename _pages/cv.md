@@ -19,7 +19,7 @@ Work experience
 ======
 * Action Localization
   * Applied Research Center (ARC), PCG, Tencent
-  * Duties included: Do research in action localization and apply to the private data
+  * Duties included: Do research in weakly supervised temporal action localization
   * Supervisor: Dr. YING SHAN
 
   
