@@ -83,11 +83,11 @@ author:
   name             : "Fa-Ting Hong"
   avatar           : "portrait.png"
   bio              : "M.S. Student at Sun Yat-sen University"
-  location         : "Location"
+  location         : 
   employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
+  pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?hl=zh-CN&user=NBV1HVIAAAAJ"
-  email            : "fatinghong@gmail.com"
+  email            : "hongft3@mail2.sysu.edu.cn"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -102,7 +102,7 @@ author:
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         : "Fa-Ting Hong"
+  linkedin         : "https://www.linkedin.com/in/fa-ting-hong-97282b184/"
   orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
