@@ -1,217 +1,212 @@
-<!DOCTYPE html
-  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>DaGAN: Depth-Aware Generative Adversarial Network for Talking Head Video Generation</title>
-  <!--=================Meta tags==========================-->
-  <meta name="robots" content="index,follow">
-  <meta name="description"
-    content="Talking head video generation aims to produce a synthetic human face video that contains the identity and pose information respectively from a given source image and a driving video. Existing works for this task heavily rely on 2D representations (e.g. appearance and motion) learned from the input images. However, dense 3D facial geometry (e.g. pixel-wise depth) is extremely important for this task as it is particularly beneficial for us to essentially generate accurate 3D face structures and distinguish noisy information from the possibly cluttered background. Nevertheless, dense 3D geometry annotations are prohibitively costly for videos and are typically not available for this video generation task. In this paper, we introduce a self-supervised face-depth learning method to automatically recover dense 3D facial geometry (i.e. depth) from the face videos without the requirement of any expensive 3D annotation data. Based on the learned dense depth maps, we further propose to leverage them to estimate sparse facial keypoints that capture the critical movement of the human head. In a more dense way, the depth is also utilized to learn 3D-aware cross-modal (i.e. appearance and depth) attention to guide the generation of motion fields for warping source image representations. All these contributions compose a novel depth-aware generative adversarial network (DaGAN) for talking head generation. Extensive experiments conducted demonstrate that our proposed method can generate highly realistic faces, and achieve significant results on the unseen human faces.">
-  <meta name="keywords"
-    content="GAN, Depth-Aware, Talking Head Genderation">
-  <link rel="author" href="https://harlanhong.github.io/publictions/dagan.html">
-  <!--=================js==========================-->
-  <link href="./project/css.css" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" type="text/css" href="./project/project.css" media="screen">
-  <script src="./project/effect.js "></script>
-  <!-- Latex -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
-        TeX: { equationNumbers: { autoNumber: "AMS" } },
-      });
-      </script>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
-    </script>
-  <!--=================Google Analytics==========================-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+<!DOCTYPE html>
+<html>
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    gtag('config', 'UA-129775907-1');
-  </script>
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>">
+    <title>MCNet</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://harlanhong.github.io/publications/mcnet.html"/>
+    <meta property="og:title" content="MCNet" />
+    <meta property="og:description" content="Project page for MCNet: Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head video Generation." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MCNet" />
+    <meta name="twitter:description" content="Project page for MCNet: Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head video Generation." />
+    <!-- <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" /> -->
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
 </head>
 
 <body>
-  <div id="content">
-    <div id="content-inner">
-      <div class="section head">
-        <h1>
-          <font color="Tomato">DaGAN</font>: <font color="Tomato">D</font>epth-<font color="Tomato">A</font>ware <font color="Tomato">G</font>enerative <font color="Tomato">A</font>dversarial <font color="Tomato">N</font>etwork for Talking Head Video Generation
-        </h1>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+                
+                Implicit Identity Representation Conditioned Memory Compensation Network <br> for Talking Head video Generation</br>
+                <small>
+                    ICCV 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://harlanhong.github.io/">
+                          Fa-Ting Hong
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
+                        </a>
+                        </br>HKUST
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="link">
+                            <a href="https://arxiv.org/abs/2203.06605" target="_blank" class="imageLink"><img
+                                src="https://www.filepicker.io/api/file/XQvDkgbsRiiPh8VSZ8wu" , width="50%"></a>
+                            <a href="https://arxiv.org/abs/2203.06605" target="_blank"><h4><strong>Paper</strong></h4></a>
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank" class="imageLink"><img
+                                src="./project/icon_github.png" , width="50%"></a>
+                            <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank"><h4><strong>Code</strong></h4></a>
+                            <!-- <a href="https://github.com/harlanhong/CVPR2022-DaGAN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/harlanhong/CVPR2022-DaGAN"></a> -->
+                          
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="../Projects/MCNet/framework.png" class="img-responsive" alt="overview"><br>
+                  An overview of the proposed MCNet. It contains two designed modules to compensate the source facial feature map: (i) The implicit identity representation conditioned memory module (<b>MCM</b>) learns a global facial meta-memory bank, and an implicit identity representation from facial keypoint coordinates of the source image, which conditions on the query of the learned meta-memory bank, to obtain more structure-correlated facial memory to the warped source feature map for compensation; (ii) The memory compensation module (<b>MCM</b>) designs a dynamic cross-attention mechanism to perform a spatial compensation for the warped source feature map for the generation. 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Samples
+                </h3>
+                <image src="../Projects/MCNet/compare-same-id.png" class="img-responsive" alt="overview"><br>
+
+                <div class="section">
+                  <center>
+                  <p>Comparisons with state-of-the-art taking head methods.
+                  </p>
+                  </center>
+                </div>
+                <!-- <p class="text-justify">
+                    Typical positional encoding (as used in Transformer networks and Neural Radiance Fields) maps a single point in space to a feature vector, where each element is generated by a sinusoid with an exponentially increasing frequency:
+                </p> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!-- <image src="img/gbinet_pipeline.png" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify"> Talking head video generation aims to animate a human face in a still image with dynamic poses and expressions using motion information derived from a target-driving video, while maintaining the person's identity in the source image. However, dramatic and complex motions in the driving video cause ambiguous generation, because the still source image cannot provide sufficient appearance information for occluded regions or delicate expression variations, which produces severe artifacts and significantly degrades the generation quality.
+                  To tackle this problem, we propose to learn a global facial representation space, and design a novel implicit identity representation conditioned memory compensation network, coined as MCNet, for high-fidelity talking head generation.~Specifically, we devise a network module to learn a unified spatial facial meta-memory bank from all training samples, which can provide rich facial structure and appearance priors to compensate warped source facial features for the generation. Furthermore, we propose an effective query mechanism based on implicit identity representations learned from the discrete keypoints of the source image. It can greatly facilitate the retrieval of more correlated information from the memory bank for the compensation. Extensive experiments demonstrate that MCNet can learn representative and complementary facial memory, and can clearly outperform previous state-of-the-art talking head generation methods on VoxCeleb1 and CelebV datasets.
+                    <!-- <a href="https://github.com/harlanhong/MCNet">MCNet</a>. -->
+                </p>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Rendering quality
+                </h3>
+                <image src="img/image_compare2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Expert specialization
+                </h3>
+                <image src="img/point_comapre4.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
       
-        <!--=================Authors==========================-->
-        <div class="authors">
-          <a href="https://harlanhong.github.io/" target="_blank">Fa-Ting Hong</a> &nbsp;&nbsp;&nbsp;&nbsp;
-          <!-- <a href="https://dblp.org/pid/236/7382.html" target="_blank">Longhao Zhang</a> &nbsp;&nbsp;&nbsp;&nbsp; -->
-          <!-- <a href="https://scholar.google.co.uk/citations?user=ABbCaxsAAAAJ&hl=en" target="_blank">Li Shen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-          <a href="" target="_blank">Longhao Zhang</a> &nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="" target="_blank">Li Shen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a href="https://www.danxurgb.net/" target="_blank">Dan Xu </a>
-        </div>
+             -->
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+              @inproceedings{mi2023switchnerf,
+                  title={MCNet: Learning Scene Decomposition with Mixture of Experts for Large-scale Neural Radiance Fields},
+                  author={Zhenxing Mi and Dan Xu},
+                  booktitle={International Conference on Learning Representations (ICLR)},
+                  year={2023},
+                  url={https://openreview.net/forum?id=PQ2zoIZqvm}
+              }
+                    </textarea>
+                </div>
+            </div>
+        </div> -->
 
-        <div class="affiliations ">
-            The Hong Kong University of Science and Technology (HKUST)
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    Our code follows several awesome repositories such as 
+                    <a href="https://github.com/harlanhong/CVPR2022-DaGAN">DaGAN</a>,
+                    <a href="https://github.com/AliaksandrSiarohin/first-order-model">FOMM</a>,
+                    We appreciate them for making their codes available to public.
+                    <br>
+                    This research is supported in part by HKUST-SAIL joint research funding, 
+                    the Early Career Scheme of the Research Grants Council (RGC) of 
+                    the Hong Kong SAR under grant No. 26202321 and HKUST Startup Fund No. R9253.
+                    <br>
+                    The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
         </div>
-        <!--=================Tabs==========================-->
-        <ul id="tabs">
-          <li><a href="#poster" name="#tab3">Poster</a></li>
-          <li><a href="#samples" name="#tab2">Samples</a></li>
-          <li><a href="#materials" name="#tab1">Materials</a></li>
-          <!-- <li><a href="#results" name="#tab4">Results</a></li> -->
-          <li><a href="#citation" name="#tab5">Citation</a></li>
-      </div>
-      <br>
-      <!--=================Teasers==========================-->
-      <div id="img_intro_examples" class="img_container">
-        <center>
-          <div class="leftView">
-            <div class="mask" style="width:80px;height:80px"></div>
-            <img class='small' src="../Projects/dagan/supp_vox1gray.jpg">
-          </div>
-        </center>
-      </div>
-      <div class="section">
-        <center>
-        <p>Comparisons with state-of-the-art taking head methods.
-        </p>
-        </center>
-      </div>
-
-      <!--=================Abstract==========================-->
-      
-      <div class="section abstract">
-        <h2>Abstract</h2>
-        <div id="framework" class="img_container">
-            <center>
-              <div class="leftView">
-                <div class="mask" style="width:80px;height:80px"></div>
-                <img class='small' src="../Projects/dagan/framework2.jpg">
-              </div>
-            </center>
-          </div>
-        
-        <br>
-        <p>
-            Talking head video generation aims to produce a synthetic human face video that contains the identity and pose information respectively from a given source image and a driving video. Existing works for this task heavily rely on 2D representations (e.g. appearance and motion) learned from the input images. However, dense 3D facial geometry (e.g. pixel-wise depth) is extremely important for this task as it is particularly beneficial for us to essentially generate accurate 3D face structures and distinguish noisy information from the possibly cluttered background. Nevertheless, dense 3D geometry annotations are prohibitively costly for videos and are typically not available for this video generation task. In this paper, we introduce a self-supervised face-depth learning method to automatically recover dense 3D facial geometry (i.e. depth) from the face videos without the requirement of any expensive 3D annotation data. Based on the learned dense depth maps, we further propose to leverage them to estimate sparse facial keypoints that capture the critical movement of the human head. In a more dense way, the depth is also utilized to learn 3D-aware cross-modal (i.e. appearance and depth) attention to guide the generation of motion fields for warping source image representations. All these contributions compose a novel depth-aware generative adversarial network (DaGAN) for talking head generation. Extensive experiments conducted demonstrate that our proposed method can generate highly realistic faces, and achieve significant results on the unseen human faces.
-        </p>
-      </div>
-      <!--=================Poster Video==========================-->
-      <div class="section poster", id="poster">
-        <h2>Poster Video</h2>
-        <br>
-        <div id="framework" class="img_container">
-            <center>
-              <div class="leftView">
-                <div class="mask" style="width:80px;height:80px"></div>
-                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
-                <iframe width="800" height="315" src="https://www.youtube.com/embed/nahsJNjWzGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </center>
-          </div>
-      </div>
-      <!--=================Video Sample==========================-->
-      <div class="section sample", id="samples">
-        <h2>Funny Samples</h2>
-        <br>
-        <div id="framework" class="img_container">
-            <center>
-              <div class="leftView">
-                <div class="mask" style="width:80px;height:80px"></div>
-                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
-                <iframe width="800" height="315" src="https://www.youtube.com/embed/wlA-Lc72rS8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </center>
-            <br>
-            <center>
-              <div class="leftView">
-                <div class="mask" style="width:80px;height:80px"></div>
-                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
-                <iframe width="800" height="315" src="https://www.youtube.com/embed/0Cf6PHDbm-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </center>
-            
-          </div>
-      </div>
-      <!--=================Materials==========================-->
-      <div class="section materials" , id="materials">
-        <h2>Materials</h2>
-        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
-          <tr>
-            <td width="60%">
-              <center>
-                <a href="https://arxiv.org/abs/2203.06605" target="_blank" class="imageLink"><img
-                    src="../Projects/dagan/paper_thumbnail.jpg" , width="60%"></a><br><br>
-                <a href="https://arxiv.org/abs/2203.06605" target="_blank">Paper</a>
-              </center>
-            </td>
-            <td width="40%" valign="middle">
-              <center>
-                <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank" class="imageLink"><img
-                    src="./project/icon_github.png" , width="50%"></a><br><br>
-                <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank">Codes</a>
-                <br><a href="https://github.com/harlanhong/CVPR2022-DaGAN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/harlanhong/CVPR2022-DaGAN"></a>
-              </center>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="section materials" , id="materials">
-        <h2>Testing Datasets</h2>
-        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
-          <tr>
-            <td width="50%">
-              <center>
-                <br>
-           <img src="./project/folders.png" , width="30%"><br><br>
-            <span class="block-text">
-            <a href="https://github.com/AliaksandrSiarohin/video-preprocessing" target="_blank"> <strong>&nbsp;VoxCeleb 1&nbsp;</strong></a></span><br><br>
-              </center>
-            </td>
-            <td width="50%" valign="middle">
-              <br>
-              <center>
-           <img src="./project/folders.png" , width="30%"><br><br>
-            <span class="block-text">
-            <a href="https://drive.google.com/file/d/1jQ6d76T5GQuvQH4dq8_Wq1T0cxvN0_xp/view" target="_blank"> <strong>&nbsp;CelebV&nbsp;</strong></a></span><br><br>
-              </center>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-      <!--=================Citation==========================-->
-      <div class="section citation" , id="citation">
-        <h2>Citation</h2>
-        <div class="section bibtex">
-          <pre>@inproceedings{hong2022depth,
-            title={Depth-Aware Generative Adversarial Network for Talking Head Video Generation},
-            author={Hong, Fa-Ting and Zhang, Longhao and Shen, Li and Xu, Dan},
-            journal={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-            year={2022}
-          }
-          </pre>
-        </div>
-      </div>
-      <!--=================Acknowledgement==========================-->
-      <div class="section ack" , id="ack">
-        <h2>Acknowledgement</h2>
-        <p>This project page is learned from the <strong><a \href="https://xinntao.github.io/projects/gfpgan">GFP-GAN</a></strong>, thanks to <strong><a \href="https://xinntao.github.io">Xintao Wang</a></strong>.</p>
-      </div>
-      <!--=================Contact==========================-->
-      <div class="section contact">
-        <h2 id="contact">Contact</h2>
-        <p>If you have any question, please contact Fa-Ting Hong at <strong>fhongac@cse.ust.hk</strong>.</p>
-      </div>
+    </div>
 </body>
-
 </html>
 
