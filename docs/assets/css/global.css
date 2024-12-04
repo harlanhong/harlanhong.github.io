@@ -1,0 +1,66 @@
+@charset "utf-8";
+body {
+    font-family: "Lato", sans-serif;
+    padding-top: 5.0rem;
+}
+
+.navbar {
+    opacity: 0.95;
+}
+
+.inline-badge {
+    height: 16px;
+    vertical-align: -10%;
+    margin-right: 2px;
+    line-break: unset;
+}
+
+.no-break {
+    white-space: nowrap;
+}
+
+.cover-image {
+    width: 180px;
+    max-height: 120px;
+}
+
+.abstract-body {
+    min-height: 100px;
+}
+
+img.lazy {
+    background-image: url('images/loading.gif');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50px 50px;
+    min-height: 80px;
+}
+
+.comma:not(:first-child) {
+    margin-left: -.3em;  
+}
+  
+/* no need to display empty elements */
+.comma:empty {
+    display: none;
+}
+
+.comma:not(:first-child):before {
+    content: ", ";
+}
+
+.badge-custom {
+    font-size: 100%;
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 1!important;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2!important;
+    }
+}

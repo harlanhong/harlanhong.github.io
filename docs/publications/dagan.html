@@ -1,0 +1,217 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>DaGAN: Depth-Aware Generative Adversarial Network for Talking Head Video Generation</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="description"
+    content="Talking head video generation aims to produce a synthetic human face video that contains the identity and pose information respectively from a given source image and a driving video. Existing works for this task heavily rely on 2D representations (e.g. appearance and motion) learned from the input images. However, dense 3D facial geometry (e.g. pixel-wise depth) is extremely important for this task as it is particularly beneficial for us to essentially generate accurate 3D face structures and distinguish noisy information from the possibly cluttered background. Nevertheless, dense 3D geometry annotations are prohibitively costly for videos and are typically not available for this video generation task. In this paper, we introduce a self-supervised face-depth learning method to automatically recover dense 3D facial geometry (i.e. depth) from the face videos without the requirement of any expensive 3D annotation data. Based on the learned dense depth maps, we further propose to leverage them to estimate sparse facial keypoints that capture the critical movement of the human head. In a more dense way, the depth is also utilized to learn 3D-aware cross-modal (i.e. appearance and depth) attention to guide the generation of motion fields for warping source image representations. All these contributions compose a novel depth-aware generative adversarial network (DaGAN) for talking head generation. Extensive experiments conducted demonstrate that our proposed method can generate highly realistic faces, and achieve significant results on the unseen human faces.">
+  <meta name="keywords"
+    content="GAN, Depth-Aware, Talking Head Genderation">
+  <link rel="author" href="https://harlanhong.github.io/publictions/dagan.html">
+  <!--=================js==========================-->
+  <link href="./project/css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project/project.css" media="screen">
+  <script src="./project/effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      <div class="section head">
+        <h1>
+          <font color="Tomato">DaGAN</font>: <font color="Tomato">D</font>epth-<font color="Tomato">A</font>ware <font color="Tomato">G</font>enerative <font color="Tomato">A</font>dversarial <font color="Tomato">N</font>etwork for Talking Head Video Generation
+        </h1>
+      
+        <!--=================Authors==========================-->
+        <div class="authors">
+          <a href="https://harlanhong.github.io/" target="_blank">Fa-Ting Hong</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <!-- <a href="https://dblp.org/pid/236/7382.html" target="_blank">Longhao Zhang</a> &nbsp;&nbsp;&nbsp;&nbsp; -->
+          <!-- <a href="https://scholar.google.co.uk/citations?user=ABbCaxsAAAAJ&hl=en" target="_blank">Li Shen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
+          <a href="" target="_blank">Longhao Zhang</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Li Shen</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.danxurgb.net/" target="_blank">Dan Xu </a>
+        </div>
+
+        <div class="affiliations ">
+            The Hong Kong University of Science and Technology (HKUST)
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#poster" name="#tab3">Poster</a></li>
+          <li><a href="#samples" name="#tab2">Samples</a></li>
+          <li><a href="#materials" name="#tab1">Materials</a></li>
+          <!-- <li><a href="#results" name="#tab4">Results</a></li> -->
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+      <!--=================Teasers==========================-->
+      <div id="img_intro_examples" class="img_container">
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class='small' src="../Projects/dagan/supp_vox1gray.jpg">
+          </div>
+        </center>
+      </div>
+      <div class="section">
+        <center>
+        <p>Comparisons with state-of-the-art taking head methods.
+        </p>
+        </center>
+      </div>
+
+      <!--=================Abstract==========================-->
+      
+      <div class="section abstract">
+        <h2>Abstract</h2>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <img class='small' src="../Projects/dagan/framework2.jpg">
+              </div>
+            </center>
+          </div>
+        
+        <br>
+        <p>
+            Talking head video generation aims to produce a synthetic human face video that contains the identity and pose information respectively from a given source image and a driving video. Existing works for this task heavily rely on 2D representations (e.g. appearance and motion) learned from the input images. However, dense 3D facial geometry (e.g. pixel-wise depth) is extremely important for this task as it is particularly beneficial for us to essentially generate accurate 3D face structures and distinguish noisy information from the possibly cluttered background. Nevertheless, dense 3D geometry annotations are prohibitively costly for videos and are typically not available for this video generation task. In this paper, we introduce a self-supervised face-depth learning method to automatically recover dense 3D facial geometry (i.e. depth) from the face videos without the requirement of any expensive 3D annotation data. Based on the learned dense depth maps, we further propose to leverage them to estimate sparse facial keypoints that capture the critical movement of the human head. In a more dense way, the depth is also utilized to learn 3D-aware cross-modal (i.e. appearance and depth) attention to guide the generation of motion fields for warping source image representations. All these contributions compose a novel depth-aware generative adversarial network (DaGAN) for talking head generation. Extensive experiments conducted demonstrate that our proposed method can generate highly realistic faces, and achieve significant results on the unseen human faces.
+        </p>
+      </div>
+      <!--=================Poster Video==========================-->
+      <div class="section poster", id="poster">
+        <h2>Poster Video</h2>
+        <br>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
+                <iframe width="800" height="315" src="https://www.youtube.com/embed/nahsJNjWzGo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </center>
+          </div>
+      </div>
+      <!--=================Video Sample==========================-->
+      <div class="section sample", id="samples">
+        <h2>Funny Samples</h2>
+        <br>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
+                <iframe width="800" height="315" src="https://www.youtube.com/embed/wlA-Lc72rS8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </center>
+            <br>
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <!-- <img class='small' src="https://github.com/harlanhong/CVPR2022-DaGAN/tree/master/assets/all_cartoon.gif"> -->
+                <iframe width="800" height="315" src="https://www.youtube.com/embed/0Cf6PHDbm-o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </center>
+            
+          </div>
+      </div>
+      <!--=================Materials==========================-->
+      <div class="section materials" , id="materials">
+        <h2>Materials</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="60%">
+              <center>
+                <a href="https://arxiv.org/abs/2203.06605" target="_blank" class="imageLink"><img
+                    src="../Projects/dagan/paper_thumbnail.jpg" , width="60%"></a><br><br>
+                <a href="https://arxiv.org/abs/2203.06605" target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="40%" valign="middle">
+              <center>
+                <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank" class="imageLink"><img
+                    src="./project/icon_github.png" , width="50%"></a><br><br>
+                <a href="https://github.com/harlanhong/CVPR2022-DaGAN" target="_blank">Codes</a>
+                <br><a href="https://github.com/harlanhong/CVPR2022-DaGAN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/harlanhong/CVPR2022-DaGAN"></a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="section materials" , id="materials">
+        <h2>Testing Datasets</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="50%">
+              <center>
+                <br>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://github.com/AliaksandrSiarohin/video-preprocessing" target="_blank"> <strong>&nbsp;VoxCeleb 1&nbsp;</strong></a></span><br><br>
+              </center>
+            </td>
+            <td width="50%" valign="middle">
+              <br>
+              <center>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://drive.google.com/file/d/1jQ6d76T5GQuvQH4dq8_Wq1T0cxvN0_xp/view" target="_blank"> <strong>&nbsp;CelebV&nbsp;</strong></a></span><br><br>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <div class="section bibtex">
+          <pre>@inproceedings{hong2022depth,
+            title={Depth-Aware Generative Adversarial Network for Talking Head Video Generation},
+            author={Hong, Fa-Ting and Zhang, Longhao and Shen, Li and Xu, Dan},
+            journal={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+            year={2022}
+          }
+          </pre>
+        </div>
+      </div>
+      <!--=================Acknowledgement==========================-->
+      <div class="section ack" , id="ack">
+        <h2>Acknowledgement</h2>
+        <p>This project page is learned from the <strong><a \href="https://xinntao.github.io/projects/gfpgan">GFP-GAN</a></strong>, thanks to <strong><a \href="https://xinntao.github.io">Xintao Wang</a></strong>.</p>
+      </div>
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact Fa-Ting Hong at <strong>fhongac@cse.ust.hk</strong>.</p>
+      </div>
+</body>
+
+</html>
+

@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Ⓜ️</text></svg>">
+    <title>MCNet</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+        <!--FACEBOOK-->
+    <meta property="og:image" content="https://jonbarron.info/mipnerf/img/rays_square.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="682">
+    <meta property="og:image:height" content="682">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://harlanhong.github.io/publications/mcnet.html"/>
+    <meta property="og:title" content="MCNet" />
+    <meta property="og:description" content="Project page for MCNet: Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head video Generation." />
+
+        <!--TWITTER-->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MCNet" />
+    <meta name="twitter:description" content="Project page for MCNet: Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head video Generation." />
+    <!-- <meta name="twitter:image" content="https://jonbarron.info/mipnerf/img/rays_square.png" /> -->
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <!-- <b>GBi-Net</b>: A Multiscale Representation <br> for Anti-Aliasing Neural Radiance Fields</br>  -->
+                
+                Implicit Identity Representation Conditioned Memory Compensation Network <br> for Talking Head video Generation</br>
+                <small>
+                    ICCV 2023
+                </small>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="https://harlanhong.github.io/">
+                          Fa-Ting Hong
+                        </a>
+                        </br>HKUST
+                    </li>
+                    <li>
+                        <a href="https://www.danxurgb.net/">
+                          Dan Xu
+                        </a>
+                        </br>HKUST
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="link">
+                            <a href="https://arxiv.org/abs/2307.09906" target="_blank" class="imageLink"><img
+                                src="https://www.filepicker.io/api/file/XQvDkgbsRiiPh8VSZ8wu" , width="50%"></a>
+                            <a href="https://arxiv.org/abs/2307.09906" target="_blank"><h4><strong>Paper</strong></h4></a>
+                            </a>
+                        </li>
+    
+                        <li>
+                            <a href="https://github.com/harlanhong/ICCV2023-MCNET" target="_blank" class="imageLink"><img
+                                src="./project/icon_github.png" , width="50%"></a>
+                            <a href="https://github.com/harlanhong/ICCV2023-MCNET" target="_blank"><h4><strong>Code</strong></h4></a>
+                            <!-- <a href="https://github.com/harlanhong/CVPR2022-DaGAN/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/harlanhong/CVPR2022-DaGAN"></a> -->
+                          
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="../Projects/MCNet/framework.png" class="img-responsive" alt="overview"><br>
+                  An overview of the proposed MCNet. It contains two designed modules to compensate the source facial feature map: (i) The implicit identity representation conditioned memory module (<b>IICM</b>) learns a global facial meta-memory bank, and an implicit identity representation from facial keypoint coordinates of the source image, which conditions on the query of the learned meta-memory bank, to obtain more structure-correlated facial memory to the warped source feature map for compensation; (ii) The memory compensation module (<b>MCM</b>) designs a dynamic cross-attention mechanism to perform a spatial compensation for the warped source feature map for the generation. 
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Samples
+                </h3>
+                <image src="../Projects/MCNet/compare-same-id.png" class="img-responsive" alt="overview"><br>
+
+                <div class="section">
+                  <center>
+                  <h4>Comparisons with state-of-the-art taking head methods.</h4>
+                  </p>
+                  </center>
+                </div>
+            </div>
+        </div>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <!-- <div class="mask" style="width:80px;height:80px"></div> -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ZLe8mTPnDGw?si=5QbEAGE6iKYAKVrW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </center>
+          </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!-- <image src="img/gbinet_pipeline.png" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify"> Talking head video generation aims to animate a human face in a still image with dynamic poses and expressions using motion information derived from a target-driving video, while maintaining the person's identity in the source image. However, dramatic and complex motions in the driving video cause ambiguous generation, because the still source image cannot provide sufficient appearance information for occluded regions or delicate expression variations, which produces severe artifacts and significantly degrades the generation quality.
+                  To tackle this problem, we propose to learn a global facial representation space, and design a novel implicit identity representation conditioned memory compensation network, coined as MCNet, for high-fidelity talking head generation.~Specifically, we devise a network module to learn a unified spatial facial meta-memory bank from all training samples, which can provide rich facial structure and appearance priors to compensate warped source facial features for the generation. Furthermore, we propose an effective query mechanism based on implicit identity representations learned from the discrete keypoints of the source image. It can greatly facilitate the retrieval of more correlated information from the memory bank for the compensation. Extensive experiments demonstrate that MCNet can learn representative and complementary facial memory, and can clearly outperform previous state-of-the-art talking head generation methods on VoxCeleb1 and CelebV datasets.
+                    <!-- <a href="https://github.com/harlanhong/MCNet">MCNet</a>. -->
+                </p>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Rendering quality
+                </h3>
+                <image src="img/image_compare2.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Expert specialization
+                </h3>
+                <image src="img/point_comapre4.png" class="img-responsive" alt="overview"><br>
+
+            </div>
+        </div>
+      
+             -->
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Citation
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+              @inproceedings{mi2023switchnerf,
+                  title={MCNet: Learning Scene Decomposition with Mixture of Experts for Large-scale Neural Radiance Fields},
+                  author={Zhenxing Mi and Dan Xu},
+                  booktitle={International Conference on Learning Representations (ICLR)},
+                  year={2023},
+                  url={https://openreview.net/forum?id=PQ2zoIZqvm}
+              }
+                    </textarea>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    Our code follows several awesome repositories such as 
+                    <a href="https://github.com/harlanhong/CVPR2022-DaGAN">DaGAN</a>,
+                    <a href="https://github.com/AliaksandrSiarohin/first-order-model">FOMM</a>,
+                    We appreciate them for making their codes available to public.
+                    <br>
+                    This research is supported in part by HKUST-SAIL joint research funding, 
+                    the Early Career Scheme of the Research Grants Council (RGC) of 
+                    the Hong Kong SAR under grant No. 26202321 and HKUST Startup Fund No. R9253.
+                    <br>
+                    The website template was borrowed from <a href="https://jonbarron.info/">Jon Barron</a> <a href="https://jonbarron.info/mipnerf/">Mip-NeRF</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
