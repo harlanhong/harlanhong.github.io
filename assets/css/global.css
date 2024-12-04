@@ -64,3 +64,39 @@ img.lazy {
         column-count: 2!important;
     }
 }
+
+/************
+/* Menu
+************/
+.menu{
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 0;
+    overflow: hidden;
+    width: 92%;
+    max-width:1000px;
+    background-color: #000;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+  .menu > li {
+  float:left;
+    display: inline;
+    color: #fff;
+  }
+  .menu > li > a{
+  font-size: 22px;
+  display: block;
+  padding: 8px 16px 4px;
+  background-color: #000;
+  color: #fff;
+  }
+  .menu img{
+    margin-top: -4px;
+    padding: 0px 0px 0px 0px;
+    border: 1px solid #000;
+  } 
+  .menu img:hover { 
+    border: 1px solid #fff; 
+  }
