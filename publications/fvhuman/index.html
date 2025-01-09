@@ -39,6 +39,13 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <style>
+    button:hover{
+        cursor: pointer;
+    }
+  </style>
+
+
 </head>
 <body>
 
@@ -165,6 +172,8 @@
                   <span>Code</span>
                   </a>
               </span>
+
+              <span class="link-block"><button class="btn1" style="font-size: 30px; ">Like 👍</button></span>
               <!-- Dataset Link. -->
               <!-- <span class="link-block">
                 <a href="https://github.com/google/nerfies/releases/tag/0.1"
@@ -399,5 +408,28 @@
   </div>
 </footer>
 
+<script>
+  window.onload =  function(){
+      // 通过类名拿到两个按钮
+      var btn1 = document.querySelector('.btn1');
+      var btn2 = document.querySelector('.btn2');
+      // 初始化点赞数量
+      var addnum = 0;
+      // 给点赞按钮添加点击事件，自增并替换输出
+      btn1.addEventListener('click',function(){
+          ++addnum;
+          btn1.textContent = "Like+"+addnum;
+      })
+      // 初始化踩数量
+      var stepnum = 0;
+      // 给踩按钮添加点击事件，自减并替换输出
+      btn2.addEventListener('click',function(){
+          --stepnum;
+          btn2.textContent = "No Like-"+stepnum;
+      })
+  }
+</script>
+
+                  
 </body>
 </html>
