@@ -1,0 +1,174 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CO2Net: Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="description"
+    content="We address the weakly supervised video highlight detectionproblem for learning to detect the segments that are more attractivein training videos given their video event label but without expensivesupervision of manually annotating highlight segments. While averting lo-calizing highlight segments manually, such a weakly supervised modellingis challenging because a video in our daily life could contain highlightsegments with multiple event types,e.g., skiing and surfing. In this work,we  propose  to  cast  such  weakly  supervised  video  highlight  detectionmodelling for a given specific event as a multiple instance ranking net-work (MINI-Net) learning. We consider each video as a bag of segments,and therefore the proposed MINI-Net learns to enforce higher highlightscore for a positive bag that contains highlight segments of a specificevent than the ones for negative bags that are irrelevant. In particular,we form a max-max ranking loss in order to acquire a reliable relativecomparison between the most likely positive segment instance and themost hard negative segment instance. With such max-max ranking loss,our MINI-Net leverages all segment information effectively to acquirea more distinct video feature representation for localizing the highlightsegments of a specific event in a video. The extensive experimental resultson three challenging public benchmarks clearly validate the efficacy ofour multiple instance ranking approach for solving the problem.  
+    ">
+  <meta name="keywords"
+    content="Highlight Detection, Video understanding">
+  <link rel="author" href="https://harlanhong.github.io/publictions/mininet.html">
+  <!--=================js==========================-->
+  <link href="./project/css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project/project.css" media="screen">
+  <script src="./project/effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      <div class="section head">
+        <h1>
+          <font color="Tomato">MINI-Net</font>: Multiple Instance Ranking Network for Video Highlight Detection
+        </h1>
+      
+        <!--=================Authors==========================-->
+        <div class="authors">
+          <a href="https://harlanhong.github.io/" target="_blank">Fa-Ting Hong</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Xuanteng Huang</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://weihonglee.github.io" target="_blank">Wei-Hong Li</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Wei-Shi Zheng </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </div>
+
+        <div class="affiliations ">
+            School of Computer Science and Engineering, Sun Yat-sen University<br>
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#materials" name="#tab1">Materials</a></li>
+          <!-- <li><a href="#results" name="#tab4">Results</a></li> -->
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+      <!--=================Teasers==========================-->
+    
+
+      <!--=================Abstract==========================-->
+      
+      <div class="section abstract">
+        <h2>Abstract</h2>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <img class='small' src="../Projects/MINI-NET/1880-framework.jpg">
+              </div>
+            </center>
+          </div>
+        
+        <br>
+        <p>
+          We address the weakly supervised video highlight detectionproblem for learning to detect the segments that are more attractivein training videos given their video event label but without expensivesupervision of manually annotating highlight segments. While averting lo-calizing highlight segments manually, such a weakly supervised modellingis challenging because a video in our daily life could contain highlightsegments with multiple event types,e.g., skiing and surfing. In this work,we  propose  to  cast  such  weakly  supervised  video  highlight  detectionmodelling for a given specific event as a multiple instance ranking net-work (MINI-Net) learning. We consider each video as a bag of segments,and therefore the proposed MINI-Net learns to enforce higher highlightscore for a positive bag that contains highlight segments of a specificevent than the ones for negative bags that are irrelevant. In particular,we form a max-max ranking loss in order to acquire a reliable relativecomparison between the most likely positive segment instance and themost hard negative segment instance. With such max-max ranking loss,our MINI-Net leverages all segment information effectively to acquirea more distinct video feature representation for localizing the highlightsegments of a specific event in a video. The extensive experimental resultson three challenging public benchmarks clearly validate the efficacy ofour multiple instance ranking approach for solving the problem.  
+        </p>
+      </div>
+      <!--=================Materials==========================-->
+      <div class="section materials" , id="materials">
+        <h2>Materials</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="60%">
+              <center>
+                <a href="https://arxiv.org/pdf/2007.09833.pdf" target="_blank" class="imageLink"><img
+                    src="../Projects/MINI-NET/paper_thumbnail.jpg" , width="40%"></a><br><br>
+                <a href="https://arxiv.org/pdf/2007.09833.pdf" target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="40%" valign="middle">
+              <center>
+                <a href="https://github.com/Huangxt57/MINI-Net" target="_blank" class="imageLink"><img
+                    src="./project/icon_github.png" , width="50%"></a><br><br>
+                <a href="https://github.com/Huangxt57/MINI-Net" target="_blank">Codes</a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="section materials" , id="materials">
+        <h2>Testing Datasets</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="30%">
+              <center>
+                <br>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://mail2sysueducn-my.sharepoint.com/:f:/g/personal/huangxt57_mail2_sysu_edu_cn/EtczIXn1ic1Ai3jemGa-o5gBVgYvk7VIixZ14NmwJENKPg?e=b6ITk1" target="_blank"> <strong>&nbsp;youtube&nbsp;</strong></a></span><br><br>
+              </center>
+            </td>
+            <td width="30%" valign="middle">
+              <br>
+              <center>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://mail2sysueducn-my.sharepoint.com/:f:/g/personal/huangxt57_mail2_sysu_edu_cn/EtczIXn1ic1Ai3jemGa-o5gBVgYvk7VIixZ14NmwJENKPg?e=b6ITk1" target="_blank"> <strong>&nbsp;Cosum&nbsp;</strong></a></span><br><br>
+              </center>
+              
+            </td>
+            <td width="30%" valign="middle">
+              <br>
+              <center>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://mail2sysueducn-my.sharepoint.com/:f:/g/personal/huangxt57_mail2_sysu_edu_cn/EtczIXn1ic1Ai3jemGa-o5gBVgYvk7VIixZ14NmwJENKPg?e=b6ITk1" target="_blank"> <strong>&nbsp;TVSUM&nbsp;</strong></a></span><br><br>
+              </center>
+              
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <div class="section bibtex">
+          <pre>@inproceedings{hong2021mininet,
+            title={MINI-Net: Multiple Instance Ranking Networkfor Video Highlight Detection}, 
+            author={Fa-Ting Hong, Xuanteng Huang, Wei-Hong Li, and Wei-Shi Zheng},
+            booktitle={ECCV},
+            year={2020}
+            }
+          </pre>
+        </div>
+      </div>
+      <!--=================Acknowledgement==========================-->
+      <div class="section ack" , id="ack">
+        <h2>Acknowledgement</h2>
+        <p>This project page is learned from the <strong><a \href="https://xinntao.github.io/projects/gfpgan">GFP-GAN</a></strong>, thanks to <strong><a \href="https://xinntao.github.io">Xintao Wang</a></strong>.</p>
+      </div>
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact Fa-Ting Hong at <strong>fhongac@cse.ust.hk</strong>.</p>
+      </div>
+</body>
+
+</html>
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>MIST: Multiple Instance Self-Training Framework for Video Anomaly Detection</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="description"
+    content="Weakly supervised video anomaly detection (WS-VAD) is to distinguish anomalies from normal events based on discriminative representations. Most existing works are limited in insufficient video representations. In this work, we develop a multiple instance self-training framework (MIST) to efficiently refine task-specific discriminative representations with only video-level annotations. In particular, MIST is composed of 1) a multiple instance pseudo label generator, which adapts a sparse continuous sampling strategy to produce more reliable clip-level pseudo labels, and 2) a self-guided attention boosted feature encoder that aims to automatically focus on anomalous regions in frames while extracting task-specific representations. Moreover, we adopt a self-training scheme to optimize both components and finally obtain a task-specific feature encoder. Extensive experiments on two public datasets demonstrate the efficacy of our method, and our method performs comparably to or even better than existing supervised and weakly supervised methods, specifically obtaining a frame-level AUC 94.83% on ShanghaiTech.">
+  <meta name="keywords"
+    content="Anomaly detection, Video understanding">
+  <link rel="author" href="https://harlanhong.github.io/publications/MIST.html">
+  <!--=================js==========================-->
+  <link href="./project/css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project/project.css" media="screen">
+  <script src="./project/effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      <div class="section head">
+        <h1>
+          <font color="Tomato">MIST</font>: <font color="Tomato">M</font>ultiple  <font color="Tomato">I</font>nstance  <font color="Tomato">S</font>elf- <font color="Tomato">T</font>raining Framework for Video Anomaly Detection
+        </h1>
+      
+        <!--=================Authors==========================-->
+        <div class="authors">
+          <a href="" target="_blank">Jia-Chang Feng</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://harlanhong.github.io/" target="_blank">Fa-Ting Hong</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Wei-Shi Zheng</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+
+        <div class="affiliations ">
+            School of Computer Science and Engineering, Sun Yat-Sen University
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#samples" name="#tab2">Samples</a></li>
+          <li><a href="#materials" name="#tab1">Materials</a></li>
+          <!-- <li><a href="#results" name="#tab4">Results</a></li> -->
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+      <!--=================Teasers==========================-->
+      <div id="img_intro_examples" class="img_container">
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class='small' src="../Projects/MIST/01937-poster.jpg">
+          </div>
+        </center>
+      </div>
+      <div class="section">
+        <center>
+        <p>The poster of our presentation.
+        </p>
+        </center>
+      </div>
+
+      <!--=================Abstract==========================-->
+      
+      <div class="section abstract">
+        <h2>Abstract</h2>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <img class='small' src="../Projects/MIST/framework.jpg">
+              </div>
+            </center>
+          </div>
+        
+        <br>
+        <p>
+            Weakly supervised video anomaly detection (WS-VAD) is to distinguish anomalies from normal events based on discriminative representations. Most existing works are limited in insufficient video representations. In this work, we develop a multiple instance self-training framework (MIST) to efficiently refine task-specific discriminative representations with only video-level annotations. In particular, MIST is composed of 1) a multiple instance pseudo label generator, which adapts a sparse continuous sampling strategy to produce more reliable clip-level pseudo labels, and 2) a self-guided attention boosted feature encoder that aims to automatically focus on anomalous regions in frames while extracting task-specific representations. Moreover, we adopt a self-training scheme to optimize both components and finally obtain a task-specific feature encoder. Extensive experiments on two public datasets demonstrate the efficacy of our method, and our method performs comparably to or even better than existing supervised and weakly supervised methods, specifically obtaining a frame-level AUC 94.83% on ShanghaiTech.
+        </p>
+      </div>
+      <!--=================Video Sample==========================-->
+      
+      <!--=================Materials==========================-->
+      <div class="section materials" , id="materials">
+        <h2>Materials</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="60%">
+              <center>
+                <a href="https://arxiv.org/abs/2104.01633" target="_blank" class="imageLink"><img
+                    src="../Projects/MIST/paper_thumbnail.jpg" , width="40%"></a><br><br>
+                <a href="https://arxiv.org/abs/2104.01633" target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="40%" valign="middle">
+              <center>
+                <a href="https://github.com/fjchange/MIST_VAD" target="_blank" class="imageLink"><img
+                    src="./project/icon_github.png" , width="50%"></a><br><br>
+                <a href="https://github.com/fjchange/MIST_VAD" target="_blank">Codes</a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="section materials" , id="materials">
+        <h2>Testing Datasets</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="50%">
+              <center>
+                <br>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://pan.baidu.com/s/1sQUGXj-BnLDGczWuGkBWdA" target="_blank"> <strong>&nbsp;ShanghaiTech&nbsp;</strong></a></span><br><br>
+            <p>Password: kym5</p>
+              </center>
+            </td>
+           
+          </tr>
+        </table>
+      </div>
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <div class="section bibtex">
+          <pre>@inproceedings{feng2021mist,
+            title={MIST: Multiple Instance Self-Training Framework for Video Anomaly Detection}, 
+            author={Jia-Chang Feng, Fa-Ting Hong, and Wei-Shi Zheng.},
+            booktitle={CVPR},
+            year={2021}
+            }
+          </pre>
+        </div>
+      </div>
+      <!--=================Acknowledgement==========================-->
+      <div class="section ack" , id="ack">
+        <h2>Acknowledgement</h2>
+        <p>This project page is learned from the <strong><a \href="https://xinntao.github.io/projects/gfpgan">GFP-GAN</a></strong>, thanks to <strong><a \href="https://xinntao.github.io">Xintao Wang</a></strong>.</p>
+      </div>
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact Fa-Ting Hong at <strong>fhongac@cse.ust.hk</strong>.</p>
+      </div>
+</body>
+
+</html>
+

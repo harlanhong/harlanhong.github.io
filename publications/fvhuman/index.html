@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Pose-correlated reference selection network for free-viewpoint human video generation">
+  <meta name="keywords" content="Human Video Generation, Pose-correlated Reference Selection, Free-viewpoint Video Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Free-viewpoint Human Animation with Pose-correlated Reference Selection</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <style>
+    button:hover{
+        cursor: pointer;
+    }
+  </style>
+
+
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://harlanhong.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div> -->
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Free-viewpoint Human Animation with Pose-correlated Reference Selection</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://harlanhong.github.io">Fa-Ting Hong</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=pF2vMhgAAAAJ&hl=zh-CN">Zhan Xu</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://h-liu1997.github.io">Haiyang Liu</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://qinjielin-nu.github.io">Qinjie Lin</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://songluchuan.github.io">Luchuan Song</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zhixinshu.github.io">Zhixin Shu</a><sup>2</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://people.umass.edu/~yangzhou/">Yang Zhou</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.duygu-ceylan.com">Duygu Ceylan</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://www.danxurgb.net">Dan Xu</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HKUST,</span>
+            <span class="author-block"><sup>2</sup>Adobe Research,</span>
+            <span class="author-block"><sup>3</sup>Northwestern University, USA</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2412.17290"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/harlanhong/FVHuman"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <span class="link-block"><button class="btn1" style="font-size: 30px; ">Like 👍</button></span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./figures/teaser2_compressed.jpg"
+                type="image/jpg">
+      </video> -->
+      <img src="./figures/teaser2_compressed.jpg"
+      />
+      <h2 class="subtitle has-text-centered">
+        <span class="dnerf">PRS</span> is able to generate free-viewpoint human videos from multiple images.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <!-- Results. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Qualitative Comparison</h2>
+            </div>
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="./videos/cmp_other.mp4" type="video/mp4">
+            </video>
+           
+          <div id="clear" style="clear:both"></div>
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Diffusion-based human animation aims to animate a human character based on a source human image as well as driving signals such as a sequence of poses. Leveraging the generative capacity of diffusion model, existing approaches are able to generate high-fidelity poses, but struggle with significant viewpoint changes, especially in zoom-in/zoom-out scenarios where camera-character distance varies. This limits the applications such as cinematic shot type plan or camera control. We propose a pose-correlated reference selection diffusion network, supporting substantial viewpoint variations in human animation. Our key idea is to enable the network to utilize multiple reference images as input, since significant viewpoint changes often lead to missing appearance details on the human body. To eliminate the computational cost, we first introduce a novel pose correlation module to compute similarities between non-aligned target and source poses, and then propose an adaptive reference selection strategy, utilizing the attention map to identify key regions for animation generation. 
+          </p>
+          <p>
+            To train our model, we curated a large dataset from public TED talks featuring varied shots of the same character, helping the model learn synthesis for different perspectives. Our experimental results show that with the same number of reference images, our model performs favorably compared to the current SOTA methods under large viewpoint change. We further show that the adaptive reference selection is able to choose the most relevant reference regions to generate humans under free viewpoints.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+
+            <!-- Method. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Method</h2>
+            </div>
+
+            <div style="text-align: center;">
+                <img src="figures/framework.jpg" class="body" alt="Interpolate start reference image. " width="100%">
+            </div>
+            <p>
+                The illustration of our framework. Our framework feed a reference set into reference Unet to extract the reference feature. To filter out the redundant information in reference features set, we propose a pose correlation guider to create a correlation map to indicate the informative region of the reference spatially. Moreover, we adopt a reference selection strategy to pick up the informative tokens from the reference feature set according to the correlation map and pass them to the following modules.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <!-- Results. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Dataset</h2>
+            </div>
+            <h3 class="title is-5">The collected multiple-shot TED (MSTed) dataset.
+            </h3>
+            <p>
+              To address this limitation and advance research in this area, we introduce a novel multi-shot TED video dataset (MSTed), designed to capture significant variations in viewpoints and camera distances. TED videos were chosen for their diverse real-world settings, professional quality, rich variations in human presentations, and broad public availability, making them an ideal foundation for a comprehensive and realistic multi-shot video dataset. MSTed dataset comprises 1,084 unique identities and 15,260 video clips, totaling approximately 30 hours of content.
+            </p>
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/dataset.mp4" type="video/mp4">
+            </video>
+       
+           
+          <div id="clear" style="clear:both"></div>
+
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+            <!-- Results. -->
+            <div style="text-align: center;">
+                <h2 class="title is-3">Results</h2>
+            </div>
+            <h3 class="title is-5">Multiple reference images and target video share the different viewpoints.
+            </h3>
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/mref/multi_ref4.mp4" type="video/mp4">
+            </video>
+            
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/mref/multi_ref5.mp4" type="video/mp4">
+            </video>
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/mref/multi_ref2.mp4" type="video/mp4">
+            </video>
+
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/mref/multi_ref3.mp4" type="video/mp4">
+            </video>
+
+
+            <h3 class="title is-5">Difference viewpoints provide more diverse information</h3>
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/diffref/diffref1.mp4" type="video/mp4">
+            </video>
+              
+            <video id="teaser" autoplay="" muted="" loop="" playsinline="" height="100%">
+              <source src="videos/diffref/diffref2.mp4" type="video/mp4">
+            </video>
+          <div id="clear" style="clear:both"></div>
+
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{hong2024fvhuman,
+  author    = {Hong, Fa-Ting and Xu, Zhan and Liu, Haiyang and Lin, Qinjie and Song, Luchuan and Shu, Zhixin and Zhou, Yang and Ceylan, Duygu and Xu, Dan},
+  title     = {Free-viewpoint Human Animation with Pose-correlated Reference Selection},
+  journal   = {arXiv},
+  year      = {2024},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2412.17290">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/harlanhong/FVHuman" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  window.onload =  function(){
+      // 通过类名拿到两个按钮
+      var btn1 = document.querySelector('.btn1');
+      var btn2 = document.querySelector('.btn2');
+      // 初始化点赞数量
+      var addnum = 0;
+      // 给点赞按钮添加点击事件，自增并替换输出
+      btn1.addEventListener('click',function(){
+          ++addnum;
+          btn1.textContent = "Like+"+addnum;
+      })
+      // 初始化踩数量
+      var stepnum = 0;
+      // 给踩按钮添加点击事件，自减并替换输出
+      btn2.addEventListener('click',function(){
+          --stepnum;
+          btn2.textContent = "No Like-"+stepnum;
+      })
+  }
+</script>
+
+                  
+</body>
+</html>

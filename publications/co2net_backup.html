@@ -1,0 +1,121 @@
+<!-- ---
+title: "Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization"
+collection: publications
+permalink: /publication/co2net
+excerpt: 'In this work, we explore feature re-calibration for action localization to reduce the redundancy. A cross-modal consensus network is proposed to tackle this problem.'
+date: 2021-07-01
+venue: 'ACM International Conference on Multimedia'
+paperurl: ''
+citation: 'Fa-Ting Hong, Jia-Chang Feng, Dan Xu, Ying Shan, Wei-Shi Zheng. Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization. ACM International Conference on Multimedia, 2021.'
+--- -->
+<!DOCTYPE html>
+
+<html lang="en" class="SYSU">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AboutMe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./AboutMe/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./AboutMe/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="./AboutMe/font-awesome.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="./AboutMe/starter-template.css" rel="stylesheet">
+    <!-- My own style -->
+    <link href="./AboutMe/project_style.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="./AboutMe/css" rel="stylesheet" type="text/css">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script async="" src="./AboutMe/analytics.js"></script>
+    <script src="./AboutMe/ie-emulation-modes-warning.js"></script>
+    <!-- Google analytics snippet -->
+    <script>
+        (function(i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function() {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96369953-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <!--     <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-96369953-3', 'auto');
+      ga('send', 'pageview');
+    </script> -->
+
+</head>
+
+<body data-gr-c-s-loaded="true">
+
+    <div class="container">
+        <div class="row">
+            <div style="text-align:justify">
+                <B><B><h1>Brief Biography</B></B>
+            </div>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <div style="text-align:center"><img class="img-responsive center-block" alt="pipeline picture" src="https://harlanhong.github.io/Projects/co2net/framework.pdf" style="width:100%"></div>
+            &nbsp; &nbsp;
+            
+            &nbsp;
+            <div style="text-align:left">
+                <small>
+            <p class="pointers_sub">
+
+            <b style="color:Red">Abstract</b> : Weakly supervised temporal action localization (WS-TAL) is achallenging task that aims to localize action instances in the givenvideo with video-level categorical supervision. Previous works usethe appearance and motion features extracted from pre-trainedfeature encoder directly,e.g.,feature concatenation or score-levelfusion.  In this work, we argue that the features extracted fromthe pre-trained extractors,e.g.,I3D, which are trained for trimmedvideo action classification, but not specific for WS-TAL task, leadingto inevitable redundancy.  Therefore, the feature re-calibration isneeded for reducing the task-irrelevant information redundancy. Here, we propose a cross-modal consensus network (CO2-Net) totackle this problem. In CO2-Net, we mainly introduce two identicalproposed cross-modal consensus modules (CCM) that design across-modal attention mechanism to filter out the task-irrelevantinformation redundancy using the global information from themain modality and the cross-modal local information from theauxiliary modality. Moreover, we further explore inter-modalityconsistency, where we treat the attention weights derived from eachCCM as the pseudo targets of the attention weights derived fromanother CCM to maintain the consistency between the predictionsderived from two CCMs, forming a mutual learning manner. Finally,we conduct extensive experiments on two common used temporalaction localization datasets, THUMOS14 and ActivityNet1.2, toverify our method and achieve the state-of-the-art results. Theexperimental results show that our proposed cross-modal consensusmodule can produce more representative features for temporalaction localization.<br>
+            
+            </p>
+        	</p>
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            <div style="text-align:center"><img class="img-responsive center-block" alt="pipeline picture" src="https://harlanhong.github.io/Projects/co2net/poster.pdf" style="width:100%"></div>
+            &nbsp; &nbsp;
+            </p>
+            
+            <div style="text-align:center"><img class="img-responsive center-block" alt="pipeline picture" src="https://harlanhong.github.io/Projects/co2net/visual.pdf" style="width:100%"></div>
+            &nbsp; &nbsp;
+            </p>
+
+        	</p>
+            <b style="color:Red">Paper and Code! </b> : <a href="https://arxiv.org/abs/2107.12589">Download paper here</a> <a href="https://github.com/harlanhong/MM2021-CO2-Net">view code</a>
+            </p>
+            </p>
+          </small>
+          <!-- download -->
+           <!-- <p class="pointers" style="text-align:left">&#9656 <a href="./stuff/Staple_website_results.zip">Results (coming soon) <i class="fa fa-file-zip-o"> </i></a><small></p> -->
+
+            </div>
+
+
+            <!-- <span id="buffer-extension-hover-button" style="display: none;position: absolute;z-index: 8675309;width: 100px;height: 25px;background-image: url(chrome-extension://noojglkidnpfjbincgijbaiedldjfbhh/data/shared/img/buffer-hover-icon@1x.png);background-size: 100px 25px;opacity: 0.9;cursor: pointer;"></span></body></html> -->
+            </small>
+            </small>
+        
+</body>
+
+</html>

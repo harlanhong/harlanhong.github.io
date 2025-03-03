@@ -1,0 +1,178 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>CO2Net: Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization</title>
+  <!--=================Meta tags==========================-->
+  <meta name="robots" content="index,follow">
+  <meta name="description"
+    content=" Weakly supervised temporal action localization (WS-TAL) is achallenging task that aims to localize action instances in the givenvideo with video-level categorical supervision. Previous works usethe appearance and motion features extracted from pre-trainedfeature encoder directly,e.g.,feature concatenation or score-levelfusion.  In this work, we argue that the features extracted fromthe pre-trained extractors,e.g.,I3D, which are trained for trimmedvideo action classification, but not specific for WS-TAL task, leadingto inevitable redundancy.  Therefore, the feature re-calibration isneeded for reducing the task-irrelevant information redundancy. Here, we propose a cross-modal consensus network (CO2-Net) totackle this problem. In CO2-Net, we mainly introduce two identicalproposed cross-modal consensus modules (CCM) that design across-modal attention mechanism to filter out the task-irrelevantinformation redundancy using the global information from themain modality and the cross-modal local information from theauxiliary modality. Moreover, we further explore inter-modalityconsistency, where we treat the attention weights derived from eachCCM as the pseudo targets of the attention weights derived fromanother CCM to maintain the consistency between the predictionsderived from two CCMs, forming a mutual learning manner. Finally,we conduct extensive experiments on two common used temporalaction localization datasets, THUMOS14 and ActivityNet1.2, toverify our method and achieve the state-of-the-art results. Theexperimental results show that our proposed cross-modal consensusmodule can produce more representative features for temporalaction localization.">
+  <meta name="keywords"
+    content="GAN, Depth-Aware, Talking Head Genderation">
+  <link rel="author" href="https://harlanhong.github.io/publictions/co2net.html">
+  <!--=================js==========================-->
+  <link href="./project/css.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./project/project.css" media="screen">
+  <script src="./project/effect.js "></script>
+  <!-- Latex -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+        TeX: { equationNumbers: { autoNumber: "AMS" } },
+      });
+      </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML">
+    </script>
+  <!--=================Google Analytics==========================-->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129775907-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-129775907-1');
+  </script>
+</head>
+
+<body>
+  <div id="content">
+    <div id="content-inner">
+      <div class="section head">
+        <h1>
+          <font color="Tomato">CO2-Net</font>: <font color="Tomato">C</font>ross-modal <font color="Tomato">C</font>onsensus <font color="Tomato">Net</font>work for Weakly Supervised Temporal Action Localization
+        </h1>
+      
+        <!--=================Authors==========================-->
+        <div class="authors">
+          <a href="https://harlanhong.github.io/" target="_blank">Fa-Ting Hong</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Jia-Chang Feng</a> &nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="https://www.danxurgb.net/" target="_blank">Dan Xu</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Ying Shan </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a href="" target="_blank">Wei-Shi Zheng </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        </div>
+
+        <div class="affiliations ">
+            School of Computer Science and Engineering, Sun Yat-sen University<br> Department of Computer Science and Engineering, HKUST, HK<br>
+            Applied Research Center (ARC), Tencent PCG
+        </div>
+        <!--=================Tabs==========================-->
+        <ul id="tabs">
+          <li><a href="#materials" name="#tab1">Materials</a></li>
+          <!-- <li><a href="#results" name="#tab4">Results</a></li> -->
+          <li><a href="#citation" name="#tab5">Citation</a></li>
+      </div>
+      <br>
+      <!--=================Teasers==========================-->
+      <div id="img_intro_examples" class="img_container">
+        <center>
+          <div class="leftView">
+            <div class="mask" style="width:80px;height:80px"></div>
+            <img class='small' src="../Projects/co2net/visual.jpg">
+          </div>
+        </center>
+      </div>
+      <div class="section">
+        <center>
+        <p>Results of our method.
+        </p>
+        </center>
+      </div>
+
+      <!--=================Abstract==========================-->
+      
+      <div class="section abstract">
+        <h2>Abstract</h2>
+        <div id="framework" class="img_container">
+            <center>
+              <div class="leftView">
+                <div class="mask" style="width:80px;height:80px"></div>
+                <img class='small' src="../Projects/co2net/framework.jpg">
+              </div>
+            </center>
+          </div>
+        
+        <br>
+        <p>
+            Weakly supervised temporal action localization (WS-TAL) is achallenging task that aims to localize action instances in the givenvideo with video-level categorical supervision. Previous works usethe appearance and motion features extracted from pre-trainedfeature encoder directly,e.g.,feature concatenation or score-levelfusion.  In this work, we argue that the features extracted fromthe pre-trained extractors,e.g.,I3D, which are trained for trimmedvideo action classification, but not specific for WS-TAL task, leadingto inevitable redundancy.  Therefore, the feature re-calibration isneeded for reducing the task-irrelevant information redundancy. Here, we propose a cross-modal consensus network (CO2-Net) totackle this problem. In CO2-Net, we mainly introduce two identicalproposed cross-modal consensus modules (CCM) that design across-modal attention mechanism to filter out the task-irrelevantinformation redundancy using the global information from themain modality and the cross-modal local information from theauxiliary modality. Moreover, we further explore inter-modalityconsistency, where we treat the attention weights derived from eachCCM as the pseudo targets of the attention weights derived fromanother CCM to maintain the consistency between the predictionsderived from two CCMs, forming a mutual learning manner. Finally,we conduct extensive experiments on two common used temporalaction localization datasets, THUMOS14 and ActivityNet1.2, toverify our method and achieve the state-of-the-art results. Theexperimental results show that our proposed cross-modal consensusmodule can produce more representative features for temporalaction localization.
+        </p>
+      </div>
+      <!--=================Materials==========================-->
+      <div class="section materials" , id="materials">
+        <h2>Materials</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="60%">
+              <center>
+                <a href="https://arxiv.org/abs/2107.12589" target="_blank" class="imageLink"><img
+                    src="../Projects/co2net/paper_thumbnail.jpg" , width="40%"></a><br><br>
+                <a href="https://arxiv.org/abs/2107.12589" target="_blank">Paper</a>
+              </center>
+            </td>
+            <td width="40%" valign="middle">
+              <center>
+                <a href="https://github.com/harlanhong/MM2021-CO2-Net" target="_blank" class="imageLink"><img
+                    src="./project/icon_github.png" , width="50%"></a><br><br>
+                <a href="https://github.com/harlanhong/MM2021-CO2-Net" target="_blank">Codes</a>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="section materials" , id="materials">
+        <h2>Testing Datasets</h2>
+        <table width="100%" align="center" border=none cellspacing="0" cellpadding="30">
+          <tr>
+            <td width="50%">
+              <center>
+                <br>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://rpi.app.box.com/s/hf6djlgs7vnl7a2oamjt0vkrig42pwho" target="_blank"> <strong>&nbsp;Thumos14&nbsp;</strong></a></span><br><br>
+              </center>
+            </td>
+            <td width="50%" valign="middle">
+              <br>
+              <center>
+           <img src="./project/folders.png" , width="30%"><br><br>
+            <span class="block-text">
+            <a href="https://rpi.app.box.com/s/hf6djlgs7vnl7a2oamjt0vkrig42pwho" target="_blank"> <strong>&nbsp;ActivityNet1.2&nbsp;</strong></a></span><br><br>
+              </center>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <!--=================Citation==========================-->
+      <div class="section citation" , id="citation">
+        <h2>Citation</h2>
+        <div class="section bibtex">
+          <pre>@inproceedings{hong2021cross,
+            title={Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization}, 
+            author={Fa-Ting Hong, Jia-Chang Feng, Dan Xu, Ying Shan, and Wei-Shi Zheng},
+            booktitle={ACM MM},
+            year={2021}
+            }
+          </pre>
+        </div>
+      </div>
+      <!--=================Acknowledgement==========================-->
+      <div class="section ack" , id="ack">
+        <h2>Acknowledgement</h2>
+        <p>This project page is learned from the <strong><a \href="https://xinntao.github.io/projects/gfpgan">GFP-GAN</a></strong>, thanks to <strong><a \href="https://xinntao.github.io">Xintao Wang</a></strong>.</p>
+      </div>
+      <!--=================Contact==========================-->
+      <div class="section contact">
+        <h2 id="contact">Contact</h2>
+        <p>If you have any question, please contact Fa-Ting Hong at <strong>fhongac@cse.ust.hk</strong>.</p>
+      </div>
+</body>
+
+</html>
+
