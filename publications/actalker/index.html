@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Mamba-Enhanced Multimodal Video Diffusion for Natural Talking Head Synthesis">
+  <meta name="keywords" content="Multi-Modal Portrait Animation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audio-visual Controlled Video Diffusion with Masked Selective State Spaces Modeling for Natural Talking Head Generation</title>
+
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+.centered-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./assets/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./assets/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- custom css file  -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/twentytwenty.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop head">
+      <div class="columns is-centered">
+        <div class="column has-text-centered head">
+          <br>
+
+          <h1 class="title is-2 publication-title">
+            Audio-visual Controlled Video Diffusion with Masked Selective State Spaces Modelling for Natural Talking Head Generation
+          </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://harlanhong.github.io">Fa-Ting Hong</a><sup>1,2</sup> &nbsp Zunnan Xu<sup>2,3</sup> &nbsp Zixiang Zhou<sup>2</sup> &nbsp Jun Zhou<sup>2</sup><br> Xiu Li<sup>3</sup> &nbsp Qin Lin<sup>2</sup> &nbsp Qinglin Lu<sup>2</sup> &nbsp  <a href="https://www.danxurgb.net/">Dan Xu</a><sup>1, <span style="font-size: 24px;">&#x2709;</span></sup>
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>HKUST,</span> &nbsp
+            <span class="author-block"><sup>2</sup>Tencent,</span> &nbsp
+            <span class="author-block"><sup>3</sup>Tsinghua University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2412.17290"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/harlanhong/ACTalker"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </span> -->
+            </div>
+
+          </div>
+          </div>             
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./assets/pics/framework.png" alt="empty" class="centered-image" width="800px">             
+      <br>
+      <div class="is-size-5 publication-authors" style="text-align: center;">
+        <span class="author-block">
+          <b>Abstract</b>&nbsp;
+        </span>
+      </div>
+
+      <h2 class="subtitle" style="font-family: 'Times New Roman', Times, serif;">
+        <br>
+        <table width="100%" border="0">
+          <tr>
+            <td style="text-align:justify">
+              Talking head synthesis is vital for virtual avatars and human-computer interaction. However, most existing methods are typically limited to accepting control from a single primary modality, restricting their practical utility. To this end, we introduce ACTalker, an end-to-end video diffusion framework that support both multi-signals control and single-signal control for talking head video generation. For multiple control, we design a parallel mamba structure with multiple branches, each utilizing a separate driving signal to control specific facial regions. A gate mechanism is applied across all branches, providing flexible control over video generation. To ensure natural coordination of the controlled video both temporally and spatially, we employ the mamba structure, which enables driving signals to manipulate feature tokens across both dimensions in each branch. Additionally, we introduce a mask-drop strategy that allows each driving signal to independently control its corresponding facial region within the mamba structure, preventing control conflicts. Experimental results demonstrate that our method produces natural-looking facial videos driven by diverse signals and that the mamba layer seamlessly integrates multiple driving modalities without conflict.
+            </td>
+          </tr>
+        </table>            
+        </h2>    
+  </div>
+  </div>
+</section>
+
+<section class="hero is-light is-small">
+<div class="hero-body">
+  <div class="columns is-centered has-text-centered">
+    <br>
+    <i><span style="color: gray">
+      (For the best viewing experience, please ensure your sound is enabled. If you are not hearing any audio, we recommend using Google Chrome.)
+    </span>
+  </i>
+  </div>  
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h3 class="title is-3">1. Only Audio Driven</h3>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h4 class="title is-4">1.1 Portrait Singing</h4>
+      </div>
+    </div>
+    <div class="container is-clipped" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <div class="column">
+        <video src="./assets/videos/singing.mp4" controls playsinline></video>
+        <video src="./assets/videos/singing2.mp4" controls playsinline></video>
+
+      </div>
+    </div>
+
+
+    <div class="columns is-centered has-text-centered" >
+      <div class="column is-full">
+          <h4 class="title is-4">1.2 Portrait Talking</h4>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <br>
+      <i><span style="color: gray">
+        (Unmute the audio to hear the audio source)
+      </span>
+    </i>
+    </div> 
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <p style="color: red;">Audio source from "<a href="https://www.youtube.com/watch?v=UF8uR6Z6KLc">Steve Jobs' 2005 Stanford Commencement (Click and jump to Youtube)</a>"</p>
+      </div>
+    </div>
+
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <br>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="assets/videos/real_audio_driven/resized_0.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="./assets/videos/real_audio_driven/resized_1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="./assets/videos/real_audio_driven/resized_2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="./assets/videos/real_audio_driven/resized_3.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+  </div>
+  
+    
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <p style="color: red;">Audio source from "<a href="https://www.youtube.com/watch?v=UF8uR6Z6KLc" style="color: red;">Taylor Swift' NYU's 2022 Commencement (Click and jump to Youtube)</a>"</p>
+      </div>
+    </div>
+    
+    
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <br>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="assets/videos/real_audio_driven/resized_4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="assets/videos/real_audio_driven/resized_5.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="./assets/videos/real_audio_driven/resized_6.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+      <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;">
+          <video autoplay loop preload="auto" muted controls >
+              <source src="./assets/videos/real_audio_driven/resized_7.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </div>
+  </div>
+
+
+  <br>
+  <br>
+  <br>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h3 class="title is-3">2. Only Facial Motion Driven</h3>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h4 class="title is-4">2.1 Natural Motion Face</h4>
+      </div>
+    </div>
+    <!-- <div class="video-container" style="flex: 1 1 calc(25% - 10px); text-align: center;"> -->
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <video autoplay loop preload="auto" muted controls >
+          <source src="./assets/videos/emoji_natural.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+      </video>
+  </div>
+  <br>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h4 class="title is-4">2.2 Micro Motion Face</h4>
+      </div>
+    </div>
+    <div class="container is-clipped" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <div class="column is-full-width">
+        <!-- <div id="slider"> -->
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/exp-emoji-2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/exp-emoji-3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/exp-emoji-4-eye.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/exp-emoji-5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/exp-emoji-6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+        <!-- </div> -->
+      </div>
+    </div>
+    <br>
+  <br>
+  <br>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h3 class="title is-3">3. Both Audio and Facial Motion Driven</h3>
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <br>
+      <i><span style="color: gray">
+        (Unmute the audio to hear the audio source. The motion source provides head pose and upper facial expressions, primarily focusing on eye movement.)
+      </span>
+    </i>
+    </div> 
+    <div class="container is-clipped" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <div class="column is-full-width">
+        <!-- <div id="slider"> -->
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/multimodal1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <!-- <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/multimodal2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video> -->
+          <video autoplay loop preload="auto" muted controls >
+            <source src="assets/videos/multimodal3.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/multimodal4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/multimodal5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <video autoplay loop preload="auto" muted controls >
+            <source src="./assets/videos/multimodal6.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+
+        <!-- </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h3 class="title is-3">4. Comparison with other methods</h3>
+          <h4 class="title is-4">4.1 Audio-driven Comparison</h4>
+      </div>
+    </div>
+    <div class="container is-clipped" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <div class="column">
+        <!-- <div id="slider"> -->
+          <video src="./assets/videos/audio_compare1.mp4" controls playsinline></video>
+          <video src="./assets/videos/audio_compare2.mp4" controls playsinline></video>
+          <video src="./assets/videos/audio_compare3.mp4" controls playsinline></video>
+          <video src="./assets/videos/audio_compare4.mp4" controls playsinline></video>
+          <video src="./assets/videos/audio_compare5.mp4" controls playsinline></video>
+        <!-- </div> -->
+      </div>
+    </div>
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+          <h4 class="title is-4">4.2 Motion-driven Comparison</h4>
+      </div>
+    </div>
+
+    <div class="container is-clipped" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+      <div class="column">
+        <!-- <div id="slider"> -->
+          <video src="./assets/videos/face-compare1.mp4" controls playsinline></video>
+          <!-- <video src="./assets/videos/face-compare2.mp4" controls playsinline></video> -->
+          <video src="./assets/videos/face-compare3.mp4" controls playsinline></video>
+          <video src="./assets/videos/face-compare4.mp4" controls playsinline></video>
+          <video src="./assets/videos/face-compare5.mp4" controls playsinline></video>
+        <!-- </div> -->
+      </div>
+    </div>  
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+<footer class="footer">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <div class="columns is-centered"><p>
+            The video clips and static images featured on this webpage are sourced from <a href="https://www.youtube.com">Youtube</a>, <a href="https://www.pinterest.com">Pinterest</a>, and some of images are generated by <a href="https://github.com/black-forest-labs/flux">FLUX</a>. These materials are utilized exclusively for research and demonstration purposes, adhering to the principles of fair use. We do not intend to infringe upon any copyrights. 
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">ProPainter</a>.
+          </p></div>  
+        </div>
+      </div>
+    </div>
+</footer>
+
+  <!-- custom js file  -->
+  <script defer src="./assets/js/fontawesome.all.min.js"></script>
+  <script src="./assets/js/bulma-carousel.min.js"></script>
+  <script src="./assets/js/bulma-slider.min.js"></script>
+  <script src="./assets/js/index.js"></script>
+  <script src="./assets/js/jquery.event.move.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const vid1b = document.getElementById('1b');
+      const vid2b = document.getElementById('2b');
+      const vid3b = document.getElementById('3b');
+      const vid4b = document.getElementById('4b');
+      const vid5b = document.getElementById('5b');
+      const vid6b = document.getElementById('6b');
+      const vid7b = document.getElementById('7b');
+      const vid9b = document.getElementById('9b');
+      const vid10b = document.getElementById('10b');
+      const vid11b = document.getElementById('11b');
+      const vid12b = document.getElementById('12b');
+      const vid13b = document.getElementById('13b');
+      const vid15b = document.getElementById('15b');
+      const vid16b = document.getElementById('16b');
+      const vid17b = document.getElementById('17b');
+      const vid18b = document.getElementById('18b');
+      const vid20b = document.getElementById('20b');
+      const vid21b = document.getElementById('21b');
+      const vid22b = document.getElementById('22b');
+      const vid23b = document.getElementById('23b');
+      const vid24b = document.getElementById('24b');
+      const vid25b = document.getElementById('25b');
+      const vid27b = document.getElementById('27b');
+      const vid28b = document.getElementById('28b');
+      const vid30b = document.getElementById('30b');
+      const vid1e = document.getElementById('1e');
+      const vid2e = document.getElementById('2e');
+      const vid3e = document.getElementById('3e');
+      const vid4e = document.getElementById('4e');
+      const vid5e = document.getElementById('5e');
+      const vid6e = document.getElementById('6e');
+      const vid7e = document.getElementById('7e');
+      const vid9e = document.getElementById('9e');
+      const vid10e = document.getElementById('10e');
+      const vid11e = document.getElementById('11e');
+      const vid12e = document.getElementById('12e');
+      const vid13e = document.getElementById('13e');
+      const vid15e = document.getElementById('15e');
+      const vid16e = document.getElementById('16e');
+      const vid17e = document.getElementById('17e');
+      const vid18e = document.getElementById('18e');
+      const vid20e = document.getElementById('20e');
+      const vid21e = document.getElementById('21e');
+      const vid22e = document.getElementById('22e');
+      const vid23e = document.getElementById('23e');
+      const vid24e = document.getElementById('24e');
+      const vid25e = document.getElementById('25e');
+      const vid27e = document.getElementById('27e');
+      const vid28e = document.getElementById('28e');
+      const vid30e = document.getElementById('30e');
+      const vid1r = document.getElementById('1r');
+      const vid2r = document.getElementById('2r');
+      const vid3r = document.getElementById('3r');
+      const vid4r = document.getElementById('4r');
+      const vid5r = document.getElementById('5r');
+      const vid6r = document.getElementById('6r');
+      const vid7r = document.getElementById('7r');
+      const vid8r = document.getElementById('8r');
+      // クリックで音声をトグル
+      vid1b.addEventListener('click', function() {
+        toggleAudio(vid1b);
+      });
+      vid2b.addEventListener('click', function() {
+        toggleAudio(vid2b);
+      });
+      vid3b.addEventListener('click', function() {
+        toggleAudio(vid3b);
+      });
+      vid4b.addEventListener('click', function() {
+        toggleAudio(vid4b);
+      });
+      vid5b.addEventListener('click', function() {
+        toggleAudio(vid5b);
+      });
+      vid6b.addEventListener('click', function() {
+        toggleAudio(vid6b);
+      });
+      vid7b.addEventListener('click', function() {
+        toggleAudio(vid7b);
+      });
+      vid9b.addEventListener('click', function() {
+        toggleAudio(vid9b);
+      });
+      vid10b.addEventListener('click', function() {
+        toggleAudio(vid10b);
+      });
+      vid11b.addEventListener('click', function() {
+        toggleAudio(vid11b);
+      });
+      vid12b.addEventListener('click', function() {
+        toggleAudio(vid12b);
+      });
+      vid13b.addEventListener('click', function() {
+        toggleAudio(vid13b);
+      });
+      vid15b.addEventListener('click', function() {
+        toggleAudio(vid15b);
+      });
+      vid16b.addEventListener('click', function() {
+        toggleAudio(vid16b);
+      });
+      vid17b.addEventListener('click', function() {
+        toggleAudio(vid17b);
+      });
+      vid18b.addEventListener('click', function() {
+        toggleAudio(vid18b);
+      });
+      vid20b.addEventListener('click', function() {
+        toggleAudio(vid20b);
+      });
+      vid21b.addEventListener('click', function() {
+        toggleAudio(vid21b);
+      });
+      vid22b.addEventListener('click', function() {
+        toggleAudio(vid22b);
+      });
+      vid23b.addEventListener('click', function() {
+        toggleAudio(vid23b);
+      });
+      vid24b.addEventListener('click', function() {
+        toggleAudio(vid24b);
+      });
+      vid25b.addEventListener('click', function() {
+        toggleAudio(vid25b);
+      });
+      vid27b.addEventListener('click', function() {
+        toggleAudio(vid27b);
+      });
+      vid28b.addEventListener('click', function() {
+        toggleAudio(vid28b);
+      });
+      vid30b.addEventListener('click', function() {
+        toggleAudio(vid30b);
+      });
+      vid1e.addEventListener('click', function() {
+        toggleAudio(vid1e);
+      });
+      vid2e.addEventListener('click', function() {
+        toggleAudio(vid2e);
+      });
+      vid3e.addEventListener('click', function() {
+        toggleAudio(vid3e);
+      });
+      vid4e.addEventListener('click', function() {
+        toggleAudio(vid4e);
+      });
+      vid5e.addEventListener('click', function() {
+        toggleAudio(vid5e);
+      });
+      vid6e.addEventListener('click', function() {
+        toggleAudio(vid6e);
+      });
+      vid7e.addEventListener('click', function() {
+        toggleAudio(vid7e);
+      });
+      vid9e.addEventListener('click', function() {
+        toggleAudio(vid9e);
+      });
+      vid10e.addEventListener('click', function() {
+        toggleAudio(vid10e);
+      });
+      vid11e.addEventListener('click', function() {
+        toggleAudio(vid11e);
+      });
+      vid12e.addEventListener('click', function() {
+        toggleAudio(vid12e);
+      });
+      vid13e.addEventListener('click', function() {
+        toggleAudio(vid13e);
+      });
+      vid15e.addEventListener('click', function() {
+        toggleAudio(vid15e);
+      });
+      vid16e.addEventListener('click', function() {
+        toggleAudio(vid16e);
+      });
+      vid17e.addEventListener('click', function() {
+        toggleAudio(vid17e);
+      });
+      vid18e.addEventListener('click', function() {
+        toggleAudio(vid18e);
+      });
+      vid20e.addEventListener('click', function() {
+        toggleAudio(vid20e);
+      });
+      vid21e.addEventListener('click', function() {
+        toggleAudio(vid21e);
+      });
+      vid22e.addEventListener('click', function() {
+        toggleAudio(vid22e);
+      });
+      vid23e.addEventListener('click', function() {
+        toggleAudio(vid23e);
+      });
+      vid24e.addEventListener('click', function() {
+        toggleAudio(vid24e);
+      });
+      vid25e.addEventListener('click', function() {
+        toggleAudio(vid25e);
+      });
+      vid27e.addEventListener('click', function() {
+        toggleAudio(vid27e);
+      });
+      vid28e.addEventListener('click', function() {
+        toggleAudio(vid28e);
+      });
+      vid30e.addEventListener('click', function() {
+        toggleAudio(vid30e);
+      });
+      vid1r.addEventListener('click', function() {
+        toggleAudio(vid1r);
+      });
+      vid2r.addEventListener('click', function() {
+        toggleAudio(vid2r);
+      });
+      vid3r.addEventListener('click', function() {
+        toggleAudio(vid3r);
+      });
+      vid4r.addEventListener('click', function() {
+        toggleAudio(vid4r);
+      });
+      vid5r.addEventListener('click', function() {
+        toggleAudio(vid5r);
+      });
+      vid6r.addEventListener('click', function() {
+        toggleAudio(vid6r);
+      });
+      vid7r.addEventListener('click', function() {
+        toggleAudio(vid7r);
+      });
+      vid8r.addEventListener('click', function() {
+        toggleAudio(vid8r);
+      });
+    });
+  
+    function toggleAudio(video) {
+      if (video.muted) {
+        video.muted = false;
+      } else {
+        video.muted = true;
+      }
+    }
+  </script>
+</body>
+</html>
