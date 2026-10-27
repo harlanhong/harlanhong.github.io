@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Source-Preserving Motion Editing: editing is mostly identity.">
+  <meta name="keywords" content="3D human motion editing, motion diffusion, source preservation, over-smoothing, MotionFix">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SuperMotion: Source-Preserving Denoising for Text-Driven Human Motion Editing</title>
+
+  <style>
+  .hr {width: 100%; height: 1px; margin: 48px 0; background-color: #d6dbdf;}
+  .centered-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  .video-section {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .pose-block {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto 32px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .pose-block .video-section {
+    width: 100%;
+    max-width: 100%;
+  }
+  .fig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  .fig-card {
+    text-align: center;
+  }
+  .fig-card img {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 8px;
+  }
+  .fig-cap {
+    color: #666;
+    font-size: 0.92em;
+    margin-top: 10px;
+    text-align: justify;
+  }
+  .instr {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin: 0 0 8px 0;
+    color: #222;
+  }
+  .clip {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #fff;
+    border-radius: 8px;
+  }
+  .clip-row {
+    width: 92%;
+    margin: 0 auto 22px;
+  }
+  table.metrics {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92em;
+    background: #fff;
+  }
+  table.metrics th, table.metrics td {
+    padding: 7px 6px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  table.metrics th {
+    font-weight: 600;
+    background: #f3f4f6;
+  }
+  table.metrics td:first-child, table.metrics th:first-child {
+    text-align: left;
+    padding-left: 12px;
+  }
+  table.metrics tr.ours td {
+    font-weight: 700;
+  }
+  table.metrics tr.ref td {
+    color: #6b7280;
+    font-style: italic;
+  }
+  .eq {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 1.15em;
+    margin: 16px 0 8px;
+    overflow-x: auto;
+  }
+  @media only screen and (max-width: 767px) {
+    .fig-grid { grid-template-columns: 1fr; }
+  }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/bulma.min.css">
+  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop head">
+      <div class="columns is-centered">
+        <div class="column has-text-centered head">
+          <br>
+          <h1 class="title is-2 publication-title">
+            SuperMotion: Source-Preserving Denoising<br>for Text-Driven Human Motion Editing
+          </h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block" style="color:#22171e7b"><b>ICLR 2027</b></span>
+          </div>
+          <br>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Anonymous Authors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="hero teaser" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 10px; width: 75%; margin: 0 auto; max-width: 8000px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./assets/pics/teaser.png" alt="Teaser" class="centered-image" width="100%">
+      <p class="fig-cap" style="max-width: 920px; margin: 8px auto 28px;">
+        (a) Source, target, and our edit at five time points. (b) Per-frame speed on the same clip. (c) Dynamics-preservation ratio across the test set.
+      </p>
+      <video class="clip" src="./assets/videos/002152.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+      <p class="fig-cap" style="max-width: 860px; margin: 8px auto 28px;">
+        "move faster" &mdash; Source, MDM, TMED, SimMotionEdit, OmniME, MotionRefit, Ours, Target.
+      </p>
+      <img src="./assets/pics/teaser_joint.png" alt="Teaser: retrieval vs dynamics" class="centered-image" width="800px">
+      <br>
+      <p class="fig-cap" style="max-width: 860px; margin: 0 auto 24px;">
+        Editing must be judged jointly. Prior editors either follow the instruction while smoothing away temporal detail, or keep dynamics by copying the source and missing the target. Ours is the only method that is both instruction-compliant and dynamics-faithful.
+      </p>
+      <div class="is-size-5 publication-authors" style="text-align: center;">
+        <span class="author-block"><b>Abstract</b></span>
+      </div>
+      <h2 class="subtitle" style="font-family: 'Times New Roman', Times, serif;">
+        <br>
+        <table width="100%" border="0">
+          <tr>
+            <td style="text-align:justify">
+              Text-based 3D human motion editing must apply an instruction while retaining the source content that the instruction does not change. Existing diffusion editors, however, denoise the entire target from Gaussian noise, so even the parts that should be copied are regenerated and pulled toward a conditional mean. We show that this produces systematic over-smoothing: prior editors flatten dynamic motions and over-animate static ones, and the damage is a preservation failure rather than a localization failure. We introduce Source-Preserving Denoising, which decomposes every reverse step into generation and preservation. After guidance, a learned per-frame, per-dimension gate blends the clean motion estimate toward a time-aligned source in \(\hat{x}_0\) space, never converting the correction back to velocity. On MotionFix, the released checkpoint reaches 33.20 full-set R@1 and a 1.035\(\times\) median dynamics-preservation ratio, remaining closer to the target than simply copying the source.
+            </td>
+          </tr>
+        </table>
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<section class="hero is-light is-small">
+<div class="hero-body">
+
+  <div class="pose-block">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h3 class="title is-3">Framework</h3>
+      </div>
+    </div>
+    <div class="container is-clipped" style="width: 90%; margin: 0 auto;">
+      <img src="./assets/pics/framework.png" alt="Framework" class="centered-image">
+      <p class="eq">
+        \(\hat{x}_0=\sqrt{\bar\alpha_t}\,x_t-\sqrt{1-\bar\alpha_t}\,\hat{v},\quad
+        g=\sigma(\mathrm{MLP}(h)),\quad
+        \tilde{x}_0=\hat{x}_0+g\odot(\bar{s}-\hat{x}_0)=(1-g)\odot\hat{x}_0+g\odot\bar{s}\)
+      </p>
+      <p class="fig-cap">
+        Every reverse step is split into generation and preservation. The backbone predicts velocity as usual; the sampler converts it to a clean estimate \(\hat{x}_0\) and nudges that estimate toward the time-aligned source wherever the learned keep-gate is open, then takes a standard DDPM posterior step. The correction never returns to \(v\)-space.
+      </p>
+    </div>
+  </div>
+
+  <div class="pose-block">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h3 class="title is-3">Qualitative Comparison</h3>
+        <h4 class="title is-4">MotionFix</h4>
+      </div>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"move faster"</p>
+      <video class="clip" src="./assets/videos/002152.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"bow down aggressively and quickly several times. keep both hands on your hips"</p>
+      <video class="clip" src="./assets/videos/005460.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"bob up and down"</p>
+      <video class="clip" src="./assets/videos/001307.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"straighten knees"</p>
+      <video class="clip" src="./assets/videos/001817.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"take a long sidestep to the right"</p>
+      <video class="clip" src="./assets/videos/001974.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"turn body a little more to the left"</p>
+      <video class="clip" src="./assets/videos/002791.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"take wider steps"</p>
+      <video class="clip" src="./assets/videos/000571.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"more energy"</p>
+      <video class="clip" src="./assets/videos/001786.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"faster"</p>
+      <video class="clip" src="./assets/videos/001743.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"slightly straighten up, but not fully"</p>
+      <video class="clip" src="./assets/videos/006088.mp4" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <p class="fig-cap" style="width: 92%; margin: 4px auto 0;">
+      Left to right: Source, MDM, TMED, SimMotionEdit, OmniME, MotionRefit, Ours, Target. Videos loop. Prior editors flatten the requested change or regenerate body parts that should have stayed on the source.
+    </p>
+  </div>
+
+  <div class="pose-block">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h4 class="title is-4">STANCE Adjustment</h4>
+      </div>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"Lift the other leg."</p>
+      <video class="clip" src="./assets/videos/st_id92.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"Raise the other leg upward."</p>
+      <video class="clip" src="./assets/videos/st_id256.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"The upper body faces forward."</p>
+      <video class="clip" src="./assets/videos/st_id138.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"The lower body turns to the other side and runs away."</p>
+      <video class="clip" src="./assets/videos/st_id100.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"The lower body runs to the other side."</p>
+      <video class="clip" src="./assets/videos/st_id69.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"The upper body is sitting upright."</p>
+      <video class="clip" src="./assets/videos/st_id112.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <div class="clip-row">
+      <p class="instr">"Bend the other arm."</p>
+      <video class="clip" src="./assets/videos/st_id27.mp4?v=2" controls playsinline loop autoplay muted preload="metadata"></video>
+    </div>
+    <p class="fig-cap" style="width: 92%; margin: 4px auto 0;">
+      Left to right: Source, TMED, SimMotionEdit, OmniME, Ours, Target. Videos loop. The same source-preserving sampler applies a localized body-part change without rewriting the rest of the clip.
+    </p>
+  </div>
+
+ 
+  <div class="pose-block">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h3 class="title is-3">Quantitative Results</h3>
+        <h4 class="title is-5">MotionFix retrieval (gen \(\rightarrow\) target)</h4>
+      </div>
+    </div>
+    <div style="width: 92%; margin: 0 auto; overflow-x: auto;">
+      <table class="metrics">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>B R@1 \(\uparrow\)</th>
+            <th>B R@2 \(\uparrow\)</th>
+            <th>B R@3 \(\uparrow\)</th>
+            <th>B AvgR \(\downarrow\)</th>
+            <th>F R@1 \(\uparrow\)</th>
+            <th>F R@2 \(\uparrow\)</th>
+            <th>F R@3 \(\uparrow\)</th>
+            <th>F AvgR \(\downarrow\)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ref">
+            <td>Copy source</td>
+            <td>74.79</td><td>85.42</td><td>91.25</td><td>1.88</td>
+            <td>30.24</td><td>44.47</td><td>54.35</td><td>15.53</td>
+          </tr>
+          <tr>
+            <td>MDM (Tevet et al. 2022b)</td>
+            <td>4.03</td><td>7.56</td><td>10.48</td><td>15.55</td>
+            <td>0.10</td><td>0.10</td><td>0.10</td><td>--</td>
+          </tr>
+          <tr>
+            <td>MDM-BP (Tevet et al. 2022b)</td>
+            <td>39.10</td><td>50.09</td><td>54.84</td><td>6.46</td>
+            <td>8.69</td><td>14.71</td><td>18.36</td><td>180.99</td>
+          </tr>
+          <tr>
+            <td>MotionLab (Guo et al. 2025)</td>
+            <td>54.53</td><td>70.02</td><td>77.38</td><td>3.42</td>
+            <td>--</td><td>--</td><td>--</td><td>--</td>
+          </tr>
+          <tr>
+            <td>TMED (Athanasiou et al. 2024)</td>
+            <td>62.90</td><td>76.51</td><td>83.06</td><td>2.71</td>
+            <td>14.51</td><td>21.72</td><td>28.73</td><td>56.63</td>
+          </tr>
+          <tr>
+            <td>MotionRefit (Jiang et al. 2025)</td>
+            <td>66.63</td><td>80.05</td><td>84.98</td><td>2.64</td>
+            <td>14.13</td><td>23.52</td><td>30.53</td><td>54.06</td>
+          </tr>
+          <tr>
+            <td>SimMotionEdit (Li et al. 2025)</td>
+            <td>70.62</td><td>82.92</td><td>88.12</td><td>2.38</td>
+            <td>25.49</td><td>39.33</td><td>49.21</td><td>23.49</td>
+          </tr>
+          <tr>
+            <td>PartMotionEdit (Yang et al. 2025)</td>
+            <td>73.96</td><td>85.83</td><td>90.21</td><td>1.92</td>
+            <td>27.27</td><td>45.06</td><td>53.36</td><td>16.24</td>
+          </tr>
+          <tr>
+            <td>Han et al. (Han &amp; Kim 2026)</td>
+            <td>74.38</td><td>88.54</td><td>92.08</td><td>1.92</td>
+            <td>29.45</td><td>45.26</td><td>54.55</td><td>16.42</td>
+          </tr>
+          <tr>
+            <td>OmniME (Shi et al. 2026)</td>
+            <td>77.29</td><td>88.54</td><td>91.88</td><td>1.79</td>
+            <td>32.02</td><td>50.20</td><td><b>59.88</b></td><td>13.06</td>
+          </tr>
+          <tr class="ours">
+            <td>Ours</td>
+            <td><b>79.17</b></td><td><b>89.17</b></td><td><b>92.92</b></td><td><b>1.68</b></td>
+            <td><b>33.20</b></td><td><b>50.79</b></td><td>59.09</td><td><b>12.87</b></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+
+</div>
+</section>
+
+<footer class="footer">
+  <div class="columns is-centered">
+    <div class="column is-8">
+      <div class="content">
+        <div class="columns is-centered">
+          <p>
+            This website template is borrowed from <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']]},
+  options: {skipHtmlTags: ['script','noscript','style','textarea','pre']}
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>
+document.querySelectorAll('video').forEach(function(v) {
+  v.muted = true;
+  v.playsInline = true;
+  v.play().catch(function() {});
+});
+</script>
+</body>
+</html>
