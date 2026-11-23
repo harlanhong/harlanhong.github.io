@@ -1,0 +1,243 @@
+\documentclass{resume}
+\usepackage{enumitem}
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry}
+\usepackage{xeCJK}
+\setCJKmainfont{Songti SC}[BoldFont={Songti SC Bold}]
+\name{洪发挺\NoCaseChange{\ {\Large\mdseries (Fa-Ting Hong)}}}
+\address{阿卜杜拉国王科技大学（KAUST），图瓦勒，沙特阿拉伯}
+\address{\underline{fating.hong@kaust.edu.sa}; \underline{fatinghong@gmail.com} \quad +86 13226243591 \quad \underline{https://harlanhong.github.io}}
+\usepackage{fontawesome5}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\definecolor{pubgray}{gray}{0.45}
+\newcommand{\pubgroup}[2]{\par\needspace{6\baselineskip}\vspace{4pt}\noindent{\bfseries\scshape #1}\hfill{\small\itshape\color{pubgray}#2}\par\vspace{-1pt}}
+\definecolor{topicVG}{HTML}{1F5FA8}
+\definecolor{topicMO}{HTML}{B5561C}
+\definecolor{topicOT}{HTML}{6B6B6B}
+\newcommand{\pubtopic}[2]{\par\needspace{3\baselineskip}\vspace{2pt}\noindent\hspace{8pt}{\color{#1}\rule[-1pt]{2.5pt}{9pt}}\hspace{5pt}{\small\bfseries\color{#1}#2}\par\vspace{1pt}}
+\newcommand{\expentry}[3]{\par\needspace{3\baselineskip}\noindent{\bfseries #1}\hfill{\itshape #2}\par\vspace{-1pt}\noindent\hspace*{14pt}\parbox[t]{\dimexpr\linewidth-14pt\relax}{\raggedright #3}\par\vspace{4pt}}
+\newcommand{\expout}[1]{\ {\color{topicVG}$\rightarrow$\,\textbf{#1}}}
+\newcommand{\expmentor}[1]{{\color{pubgray}\ \textperiodcentered\ #1}}
+\newcommand{\pubnote}[1]{\noindent{\small\color{pubgray}#1}\par}
+\usepackage{fancyhdr}
+\usepackage{marvosym}
+\begin{document}
+
+\begin{rSection}{个人简介}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-5pt}
+我目前是沙特阿卜杜拉国王科技大学（KAUST）博士后，合作导师为 Peter Wonka 教授。博士毕业于香港科技大学（HKUST）计算机科学与工程系，导师为徐丹教授；硕士毕业于中山大学，导师为郑伟诗教授。我的研究聚焦\textbf{以人为中心的视频}：视频中人的生成、驱动与理解，涵盖说话人头部与音频驱动肖像视频、自由视角全身动画与四维数字人，以及驱动这些内容的人体运动。相关工作发表于 CVPR、ICCV、ECCV、IEEE TPAMI、IJCV 等顶级会议与期刊，并曾在 Meta Reality Labs、Adobe Research 和腾讯混元从事研究。
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{研究方向}
+
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-3pt}
+    \item {\color{topicVG}\bfseries 以人为中心的视频与视觉理解 / 生成：}说话人头部与音频驱动视频合成、视频配音与唇形同步、自由视角人体动画、四维数字人，以及以人为中心的视频理解
+    \item {\color{topicMO}\bfseries 以人为中心的运动生成：}文本驱动的人体运动生成与编辑、运动补间，以及人--人交互生成
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{教育经历}
+
+{\bf 香港科技大学} \hfill {\em 2021年8月 -- 2026年5月}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    \item 计算机科学与工程博士
+    \item 导师：徐丹教授
+\end{itemize}
+
+{\bf 中山大学} \hfill {\em 2018年9月 -- 2021年7月}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    \item 计算机科学与技术硕士
+    \item 导师：郑伟诗教授
+\end{itemize}
+
+{\bf 华南理工大学} \hfill {\em 2014年8月 -- 2018年7月}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    \item 计算机科学与技术学士
+    \item 导师：毕盛教授
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{科研经历}
+
+\expentry{生成式人工智能卓越中心，KAUST，图瓦勒}{2026年8月 -- 至今}
+  {博士后\expmentor{合作导师：Peter Wonka 教授}}
+\expentry{Reality Labs Research, Meta，苏黎世}{2025年6月 -- 2025年12月}
+  {研究实习生，四维数字人与头发建模\expmentor{导师：Aljaz Bozic 博士}}
+\expentry{腾讯混元实验室，深圳}{2024年10月 -- 2025年3月}
+  {研究实习生，说话人头部视频生成\expmentor{导师：Qinglin Lu}}
+\expentry{Adobe Research 媒体智能实验室，圣何塞}{2024年5月 -- 2024年8月}
+  {研究实习生，自由视角人体动画\expmentor{导师：Zhan Xu、Yang Zhou、Zhixin Shu、Duygu Ceylan}}
+\expentry{阿里巴巴与香港科技大学合作研究}{2021 -- 2022}
+  {深度感知说话人头部生成}
+
+\end{rSection}
+
+% \begin{rSection}{科研基金}
+%
+% {\bf 中国人工智能学会--玻色量子计算应用创新基金} \hfill {\em 2026}
+% \vspace{-3pt}
+% \begin{itemize}[leftmargin=18pt]
+%     \setlength{\itemsep}{-5pt}
+%     \item 项目：基于量子优化的 4D 高斯世界模型与具身导航方法研究
+%     \item 角色：主持人（与中山大学孟静珂联合）
+% \end{itemize}
+%
+% \end{rSection}
+
+\begin{rSection}{第一作者 / 通讯作者论文}
+\pubnote{$^*$ 共同一作 \quad \textsuperscript{\Letter} 通讯作者 \quad 按研究方向分类，同类内按时间倒序}
+
+\pubgroup{预印本与在投论文}{9 篇}
+\pubtopic{topicVG}{以人为中心的视频与视觉理解 / 生成}
+\begin{enumerate}[label={\color{topicVG}[R\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item \textbf{Fa-Ting Hong}, Dan Xu,
+    ``Arbitrary-Resolution 4D Human Animation via Continuous Feature Splatting'', \textbf{\textit{在投} 2026}.
+
+    \item \textbf{Fa-Ting Hong}$^*$, Runzhen Liu$^*$, Luchuan Song, Hongmin Cai, Chuhua Xian{\textsuperscript{\Letter}},
+    ``EfficientSync: Real-Time Lip Synchronization via Deformation-Based Reference Texture Mixing'', \textbf{\textit{arXiv} 2026}.
+
+    \item Hongzhe Liao, Chuhua Xian, Hongmin Cai, Haiyang Liu, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting'', \textbf{\textit{在投} 2026}.
+
+    \item Hongbin Ye, Haixu Liu, Shenwei Kang, Wenxiu Wei, Tinglan Wang, Hongdong Zhu, Fan Tang, Qi Gao, Yin Ma, Kai Wen, Hai Wei, Nuo Qian, Wei-Shi Zheng, Shaobo Chen, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}}, Jingke Meng,
+    ``SplatQ: Interaction-Aware Pruning of 3D Gaussian Splatting via Quadratic Selection'', \textbf{\textit{arXiv} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Yunfei Liu, Yu Li, Changyin Zhou, Fei Yu, Dan Xu,
+    ``DreamHead: Learning Spatial-Temporal Correspondence via Hierarchical Diffusion for Audio-driven Talking Head Synthesis'', \textbf{\textit{arXiv} 2024}.
+
+    \item \textbf{Fa-Ting Hong}, and Dan Xu,
+    ``Learning Online Scale Transformation for Talking Head Video Generation'', \textbf{\textit{arXiv} 2024}.
+
+\end{enumerate}
+\pubtopic{topicMO}{以人为中心的运动生成}
+\begin{enumerate}[label={\color{topicMO}[R\arabic*]}, start=7, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item \textbf{Fa-Ting Hong}, Xiangjun Tang, Peter Wonka{\textsuperscript{\Letter}},
+    ``HumanBridge: Bridging Two Existing Human Motions with Planted Feet'', \textbf{\textit{在投} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Peter Wonka{\textsuperscript{\Letter}},
+    ``SuperMotion: Source-Preserving Denoising for Text-Driven Human Motion Editing'', \textbf{\textit{arXiv} 2026}.
+
+    \item Runzhen Liu, Chuhua Xian, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``AtomicMotion: Learning Human Motion From Different Human Parts'', \textbf{\textit{在投} 2026}.
+
+\end{enumerate}
+
+\pubgroup{已发表论文}{11 篇}
+\pubtopic{topicVG}{以人为中心的视频与视觉理解 / 生成}
+\begin{enumerate}[label={\color{topicVG}[P\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Runzhen Liu, Qinjie Lin, Yunfei Liu, Lijian Lin, Ye Zhu, Yu Li, Chuhua Xian, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``Identity-Preserving Video Dubbing Using Motion Warping'', \textbf{\textit{IJCV} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Zunnan Xu, Zixiang Zhou, Jun Zhou, Xiu Li, Qin Lin, Qinglin Lu, Dan Xu{\textsuperscript{\Letter}},
+    ``Audio-visual Controlled Video Diffusion with Masked Selective State Spaces Modeling for Natural Talking Head Generation'', \textbf{\textit{ICCV} 2025}.
+
+    \item \textbf{Fa-Ting Hong}, Zhan Xu, Haiyang Liu, Qinjie Lin, Luchuan Song, Zhixin Shu, Yang Zhou, Duygu Ceylan, Dan Xu{\textsuperscript{\Letter}},
+    ``Free-viewpoint Human Animation with Pose-correlated Reference Selection'', \textbf{\textit{CVPR} 2025}（\textbf{\textit{Highlight}}，录用论文的 13.5\%）.
+
+    \item \textbf{Fa-Ting Hong}, Li Shen, and Dan Xu{\textsuperscript{\Letter}},
+    ``DaGAN++: Depth-Aware Generative Adversarial Network for Talking Head Video Generation'', \textbf{\textit{IEEE TPAMI} 2024}（Regular Paper）.
+
+    \item \textbf{Fa-Ting Hong}, and Dan Xu{\textsuperscript{\Letter}},
+    ``Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head Video Generation'', \textbf{\textit{ICCV} 2023}.
+
+    \item \textbf{Fa-Ting Hong}, Longhao Zhang, Li Shen, and Dan Xu{\textsuperscript{\Letter}},
+    ``Depth-Aware Generative Adversarial Network for Talking Head Video Generation'', \textbf{\textit{CVPR} 2022}.
+
+    \item \textbf{Fa-Ting Hong}, Jia-Chang Feng, Dan Xu, Ying Shan, and Wei-Shi Zheng,
+    ``Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization'', \textbf{\textit{ACM MM} 2021}.
+
+    \item \textbf{Fa-Ting Hong}, Xuanteng Huang, Wei-Hong Li, and Wei-Shi Zheng,
+    ``MINI-Net: Multiple Instance Ranking Network for Video Highlight Detection'', \textbf{\textit{ECCV} 2020}.
+
+    \item \textbf{Fa-Ting Hong}, Wei-Hong Li, and Wei-Shi Zheng,
+    ``Learning to Detect Important People in Unlabelled Images for Semi-supervised Important People Detection'', \textbf{\textit{CVPR} 2020}.
+
+    \item Wei-Hong Li$^*$, \textbf{Fa-Ting Hong}$^*$, and Wei-Shi Zheng,
+    ``Learning to Learn Relation for Important People Detection in Still Images'', \textbf{\textit{CVPR} 2019}.
+
+\end{enumerate}
+\pubtopic{topicMO}{以人为中心的运动生成}
+\begin{enumerate}[label={\color{topicMO}[P\arabic*]}, start=11, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Nan Lei, Yuan-Ming Li, Ling-An Zeng, Liang Xu, Zhi-Wei Xia, Hui-Wen Huang, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}}, Wei-Shi Zheng,
+    ``PhysiGen: Integrating Collision-Aware Physical Constraints for High-Fidelity Human-Human Interaction Generation'', \textbf{\textit{ICASSP} 2026}.
+
+\end{enumerate}
+\end{rSection}
+
+\begin{rSection}{视频方向合作论文}
+\pubtopic{topicVG}{以人为中心的视频与视觉理解 / 生成}
+\begin{enumerate}[label={\color{topicVG}[C\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Haiyang Liu, Zhan Xu, \textbf{Fa-Ting Hong}, Hsin-Ping Huang, Yi Zhou, Yang Zhou,
+    ``Video Motion Graphs'', \textbf{\textit{ICCV} 2025}.
+
+    \item Shuling Zhao, \textbf{Fa-Ting Hong}, Xianshui Huang, Dan Xu,
+    ``Synergizing Motion and Appearance: Multi-Scale Compensatory Codebooks for Talking Head Video Generation'', \textbf{\textit{CVPR} 2025}.
+
+    \item Zunnan Xu, Zhentao Yu, Zixiang Zhou, Jun Zhou, Xiaoyu Jin, \textbf{Fa-Ting Hong}, Xiaozhong Ji, Junwei Zhu, Chengfei Cai, Shiyu Tang, Qin Lin, Xiu Li, Qinglin Lu,
+    ``HunyuanPortrait: Implicit Condition Control for Enhanced Portrait Animation'', \textbf{\textit{CVPR} 2025}.
+
+    \item Yu Wang, Yunfei Liu, \textbf{Fa-Ting Hong}, Meng Cao, Lijian Lin, Yu Li,
+    ``AnyTalk: Multi-modal Driven Multi-domain Talking Head Generation'', \textbf{\textit{AAAI} 2025}.
+
+    \item Jia-Run Du, Jia-Chang Feng, Kun-Yu Lin, \textbf{Fa-Ting Hong}, Xiao-Ming Wu, Zhongang Qi, Ying Shan, Wei-Shi Zheng,
+    ``Weakly-Supervised Temporal Action Localization by Progressive Complementary Learning'', \textbf{\textit{IEEE TCSVT} 2024}.
+
+    \item Jia-Chang Feng, \textbf{Fa-Ting Hong}, and Wei-Shi Zheng,
+    ``MIST: Multiple Instance Self-Training Framework for Video Anomaly Detection'', \textbf{\textit{CVPR} 2021}.
+
+    \item Ling-An Zeng, \textbf{Fa-Ting Hong}, Wei-Shi Zheng, Qi-Zhi Yu, Wei Zeng, Yao-Wei Wang, and Jian-Huang Lai,
+    ``Hybrid Dynamic-static Context-aware Attention Network for Action Assessment in Long Videos'', \textbf{\textit{ACM MM} 2020}.
+
+\end{enumerate}
+\end{rSection}
+
+\needspace{6\baselineskip}
+\begin{rSection}{专利}
+
+\begin{itemize}[leftmargin=18pt]
+\setlength{\itemsep}{-2pt}
+    \item \textbf{基于姿态相关性的数字视频生成}。Zhixin Shu, Zhan Xu, Yang Zhou, \textbf{\mbox{Fa-Ting} Hong}, Duygu Ceylan。美国专利，案号 P13394-US（已申请）。
+    \item \textbf{一种结合深度学习与关系建模的图像/视频重要人物检测方法}。Wei-Shi Zheng, \textbf{Fa-Ting Hong}。中国发明专利 CN111008558B（已授权）。
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{获奖}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-3pt}
+    \item 香港科技大学计算机科学及工程学系最佳博士论文奖，Honorable Mention，2025--26
+    \item 研究生国家奖学金，教育部，2020
+    \item 国家奖学金（1/80），教育部，2017
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{学术服务}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-3pt}
+    \item 审稿人：IEEE TPAMI, IJCV, IEEE TMM, CVPR, ICCV, ECCV, NeurIPS, ICLR, SIGGRAPH Asia, ACM MM
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{更多信息}
+更多信息请见个人主页：https://harlanhong.github.io.
+\end{rSection}
+
+\end{document}

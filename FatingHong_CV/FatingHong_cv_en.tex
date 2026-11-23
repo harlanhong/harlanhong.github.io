@@ -1,0 +1,375 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Medium Length Professional CV
+% LaTeX Template
+% Version 2.0 (8/5/13)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Trey Hunner (http://www.treyhunner.com/)
+%
+% Important note:
+% This template requires the resume.cls file to be in the same directory as the
+% .tex file. The resume.cls file provides the resume style used for structuring the
+% document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\documentclass{resume} % Use the custom resume.cls style
+\usepackage{enumitem}
+\usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
+\name{Fating Hong\NoCaseChange{\ {\Large\mdseries (Fa-Ting Hong)}}} % Your name
+\address{King Abdullah University of Science and Technology (KAUST), Thuwal, Saudi Arabia} % Your address
+\address{\underline{fating.hong@kaust.edu.sa}; \underline{fatinghong@gmail.com} \quad +86 13226243591 \quad \underline{https://harlanhong.github.io}} % Your phone number and email
+% \address{} % Your Homepage
+\usepackage{fontawesome5}
+\usepackage{needspace}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\definecolor{pubgray}{gray}{0.45}
+\newcommand{\pubgroup}[2]{\par\needspace{6\baselineskip}\vspace{4pt}\noindent{\bfseries\scshape #1}\hfill{\small\itshape\color{pubgray}#2}\par\vspace{-1pt}}
+\definecolor{topicVG}{HTML}{1F5FA8}
+\definecolor{topicMO}{HTML}{B5561C}
+\definecolor{topicOT}{HTML}{6B6B6B}
+\newcommand{\pubtopic}[2]{\par\needspace{3\baselineskip}\vspace{2pt}\noindent\hspace{8pt}{\color{#1}\rule[-1pt]{2.5pt}{9pt}}\hspace{5pt}{\small\bfseries\color{#1}#2}\par\vspace{1pt}}
+\newcommand{\expentry}[3]{\par\needspace{3\baselineskip}\noindent{\bfseries #1}\hfill{\itshape #2}\par\vspace{-1pt}\noindent\hspace*{14pt}\parbox[t]{\dimexpr\linewidth-14pt\relax}{\raggedright #3}\par\vspace{4pt}}
+\newcommand{\expout}[1]{\ {\color{topicVG}$\rightarrow$\,\textbf{#1}}}
+\newcommand{\expmentor}[1]{{\color{pubgray}\ \textperiodcentered\ #1}}
+\newcommand{\pubnote}[1]{\noindent{\small\color{pubgray}#1}\par}
+\usepackage{fancyhdr}
+\usepackage{marvosym}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{array}
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	Introduction
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Introduction}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-5pt}
+I am a Postdoctoral Fellow at King Abdullah University of Science and Technology (KAUST), working with Prof. Peter Wonka. I received my Ph.D. in Computer Science and Engineering from the Hong Kong University of Science and Technology (HKUST) under the supervision of Prof. Dan Xu, and my M.Sc. from Sun Yat-sen University under the supervision of Prof. Wei-Shi Zheng. My research centers on \textbf{human-centric video}: generating, animating, and understanding people in video, from talking heads and audio-driven portraits to free-viewpoint full-body animation and 4D avatars, as well as the human motion that drives them. My work has appeared in CVPR, ICCV, ECCV, IEEE TPAMI, and IJCV, and I have conducted research at Meta Reality Labs, Adobe Research, and Tencent Hunyuan.
+%I am currently open to Research Scientist, Faculty, and Postdoc opportunities.
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	Research Interest
+%----------------------------------------------------------------------------------------
+\begin{rSection}{Research Interest}
+
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-3pt}
+    \item {\color{topicVG}\bfseries Human-centric Video \& Visual Understanding / Generation:} talking head and audio-driven video synthesis, video dubbing and lip sync, free-viewpoint human animation, 4D avatars, and human-centric video understanding
+    \item {\color{topicMO}\bfseries Human-centric Motion:} text-driven motion generation and editing, motion in-betweening, and human--human interaction generation
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Education}
+
+{\bf Hong Kong University of Science and Technology} \hfill {\em Aug. 2021 - May. 2026}
+% {\bf Hong Kong University of Science and Technology} \hfill {\em Aug. 2021 - \underline{Mar. 2023}}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    % \item Research Interests: Talking-Head Generation, Image Generation by GAN and Diffusion
+    \item Ph.D. in Computer Science and Engineering
+    \item Supervisor: Prof. Dan Xu
+\end{itemize}
+
+{\bf Sun Yat-sen University} \hfill {\em Sep. 2018 - Jul. 2021}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    \item M.Sc. in Computer Science and Technology
+    % \item Research Interests: Video Understanding \& Scene Understanding
+    \item Supervisor: Prof. Wei-Shi Zheng
+\end{itemize}
+
+{\bf South China University of Technology} \hfill {\em Aug. 2014 - Jul. 2018}
+\vspace{-3pt}
+\begin{itemize}[leftmargin=18pt]
+    \setlength{\itemsep}{-5pt}
+    \item B.Sc in Computer Science and Technology
+    % \item Research Interests: SLAM of Robots
+    \item Supervisor: Prof. Sheng Bi
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{Experience}
+
+\expentry{Center of Excellence for Generative AI, KAUST, Thuwal}{Aug. 2026 -- Present}
+  {Postdoctoral Fellow\expmentor{Mentor: Prof. Peter Wonka}}
+\expentry{Reality Labs Research, Meta, Zurich}{Jun. 2025 -- Dec. 2025}
+  {Research Intern, 4D Avatars \& Hair Modeling\expmentor{Mentor: Dr. Aljaz Bozic}}
+\expentry{Hunyuan Lab, Tencent, Shenzhen}{Oct. 2024 -- Mar. 2025}
+  {Research Intern, Talking Head Video Generation\expmentor{Mentor: Qinglin Lu}}
+\expentry{Media Intelligence Lab, Adobe Research, San Jose}{May 2024 -- Aug. 2024}
+  {Research Intern, Free-viewpoint Human Animation\expmentor{Mentors: Zhan Xu, Yang Zhou, Zhixin Shu, Duygu Ceylan}}
+\expentry{Alibaba -- HKUST Research Collaboration}{2021 -- 2022}
+  {Depth-aware Talking Head Generation}
+
+% {\bf Vistring Lab, IDEA} \hfill {\em Aug. 2023 - Dec. 2023}
+% \setlength{\itemsep}{-3pt}
+% \begin{itemize}[leftmargin=18pt]
+%     \setlength{\itemsep}{-5pt}
+%     \item Research Intern, Diffusion-based Audio-driven Talking Head Generation
+%     \item Mentor: Dr. Yu Li
+% \end{itemize}
+
+% {\bf Applied Research Center (ARC), PCG, Tencent} \hfill {\em May. 2020 - Jun. 2021}
+% \setlength{\itemsep}{-3pt}
+% \begin{itemize}[leftmargin=18pt]
+%     \setlength{\itemsep}{-5pt}
+%     \item Research Intern, Temporal Action Localization
+%     \item Mentor: Dr. Ying Shan
+% \end{itemize}
+
+\end{rSection}
+
+% \begin{rSection}{Grants}
+%
+% {\bf CAAI-Bose Quantum Computing Application Innovation Fund} \hfill {\em 2026}
+% \vspace{-3pt}
+% \begin{itemize}[leftmargin=18pt]
+%     \setlength{\itemsep}{-5pt}
+%     \item Project: Research on 4D Gaussian World Models and Embodied Navigation via Quantum Optimization
+%     \item Role: Principal Investigator (joint with Jingke Meng, Sun Yat-sen University)
+% \end{itemize}
+%
+% \end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	PUBLICATIONS
+%----------------------------------------------------------------------------------------
+
+\begin{rSection}{Publications as First / Corresponding Author}
+\pubnote{$^*$ Equal contribution \quad \textsuperscript{\Letter} Corresponding author \quad Grouped by topic; reverse chronological within each topic}
+
+\pubgroup{Preprints \& Under Review}{9 papers}
+\pubtopic{topicVG}{Human-centric Video \& Visual Understanding / Generation}
+\begin{enumerate}[label={\color{topicVG}[R\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item \textbf{Fa-Ting Hong}, Dan Xu,
+    ``Arbitrary-Resolution 4D Human Animation via Continuous Feature Splatting'', \textbf{\textit{Under review} 2026}.
+
+    \item \textbf{Fa-Ting Hong}$^*$, Runzhen Liu$^*$, Luchuan Song, Hongmin Cai, Chuhua Xian{\textsuperscript{\Letter}},
+    ``EfficientSync: Real-Time Lip Synchronization via Deformation-Based Reference Texture Mixing'', \textbf{\textit{arXiv} 2026}.
+
+    \item Hongzhe Liao, Chuhua Xian, Hongmin Cai, Haiyang Liu, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``SplitAvatar: One-shot Head Avatar with Autoregressive Gaussian Splitting'', \textbf{\textit{Under review} 2026}.
+
+    \item Hongbin Ye, Haixu Liu, Shenwei Kang, Wenxiu Wei, Tinglan Wang, Hongdong Zhu, Fan Tang, Qi Gao, Yin Ma, Kai Wen, Hai Wei, Nuo Qian, Wei-Shi Zheng, Shaobo Chen, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}}, Jingke Meng,
+    ``SplatQ: Interaction-Aware Pruning of 3D Gaussian Splatting via Quadratic Selection'', \textbf{\textit{arXiv} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Yunfei Liu, Yu Li, Changyin Zhou, Fei Yu, Dan Xu,
+    ``DreamHead: Learning Spatial-Temporal Correspondence via Hierarchical Diffusion for Audio-driven Talking Head Synthesis'', \textbf{\textit{arXiv} 2024}.
+
+    \item \textbf{Fa-Ting Hong}, and Dan Xu,
+    ``Learning Online Scale Transformation for Talking Head Video Generation'', \textbf{\textit{arXiv} 2024}.
+
+\end{enumerate}
+\pubtopic{topicMO}{Human-centric Motion}
+\begin{enumerate}[label={\color{topicMO}[R\arabic*]}, start=7, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item \textbf{Fa-Ting Hong}, Xiangjun Tang, Peter Wonka{\textsuperscript{\Letter}},
+    ``HumanBridge: Bridging Two Existing Human Motions with Planted Feet'', \textbf{\textit{Under review} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Peter Wonka{\textsuperscript{\Letter}},
+    ``SuperMotion: Source-Preserving Denoising for Text-Driven Human Motion Editing'', \textbf{\textit{arXiv} 2026}.
+
+    \item Runzhen Liu, Chuhua Xian, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``AtomicMotion: Learning Human Motion From Different Human Parts'', \textbf{\textit{Under review} 2026}.
+
+\end{enumerate}
+
+\pubgroup{Peer-reviewed Papers}{11 papers}
+\pubtopic{topicVG}{Human-centric Video \& Visual Understanding / Generation}
+\begin{enumerate}[label={\color{topicVG}[P\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Runzhen Liu, Qinjie Lin, Yunfei Liu, Lijian Lin, Ye Zhu, Yu Li, Chuhua Xian, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}},
+    ``Identity-Preserving Video Dubbing Using Motion Warping'', \textbf{\textit{IJCV} 2026}.
+
+    \item \textbf{Fa-Ting Hong}, Zunnan Xu, Zixiang Zhou, Jun Zhou, Xiu Li, Qin Lin, Qinglin Lu, Dan Xu{\textsuperscript{\Letter}},
+    ``Audio-visual Controlled Video Diffusion with Masked Selective State Spaces Modeling for Natural Talking Head Generation'', \textbf{\textit{ICCV} 2025}.
+
+    \item \textbf{Fa-Ting Hong}, Zhan Xu, Haiyang Liu, Qinjie Lin, Luchuan Song, Zhixin Shu, Yang Zhou, Duygu Ceylan, Dan Xu{\textsuperscript{\Letter}},
+    ``Free-viewpoint Human Animation with Pose-correlated Reference Selection'', \textbf{\textit{CVPR} 2025} (\textbf{\textit{Highlight}}, 13.5\% of accepted papers).
+
+    \item \textbf{Fa-Ting Hong}, Li Shen, and Dan Xu{\textsuperscript{\Letter}},
+    ``DaGAN++: Depth-Aware Generative Adversarial Network for Talking Head Video Generation'', \textbf{\textit{IEEE TPAMI} 2024} (Regular Paper).
+
+    \item \textbf{Fa-Ting Hong}, and Dan Xu{\textsuperscript{\Letter}},
+    ``Implicit Identity Representation Conditioned Memory Compensation Network for Talking Head Video Generation'', \textbf{\textit{ICCV} 2023}.
+
+    \item \textbf{Fa-Ting Hong}, Longhao Zhang, Li Shen, and Dan Xu{\textsuperscript{\Letter}},
+    ``Depth-Aware Generative Adversarial Network for Talking Head Video Generation'', \textbf{\textit{CVPR} 2022}.
+
+    \item \textbf{Fa-Ting Hong}, Jia-Chang Feng, Dan Xu, Ying Shan, and Wei-Shi Zheng,
+    ``Cross-modal Consensus Network for Weakly Supervised Temporal Action Localization'', \textbf{\textit{ACM MM} 2021}.
+
+    \item \textbf{Fa-Ting Hong}, Xuanteng Huang, Wei-Hong Li, and Wei-Shi Zheng,
+    ``MINI-Net: Multiple Instance Ranking Network for Video Highlight Detection'', \textbf{\textit{ECCV} 2020}.
+
+    \item \textbf{Fa-Ting Hong}, Wei-Hong Li, and Wei-Shi Zheng,
+    ``Learning to Detect Important People in Unlabelled Images for Semi-supervised Important People Detection'', \textbf{\textit{CVPR} 2020}.
+
+    \item Wei-Hong Li$^*$, \textbf{Fa-Ting Hong}$^*$, and Wei-Shi Zheng,
+    ``Learning to Learn Relation for Important People Detection in Still Images'', \textbf{\textit{CVPR} 2019}.
+
+\end{enumerate}
+\pubtopic{topicMO}{Human-centric Motion}
+\begin{enumerate}[label={\color{topicMO}[P\arabic*]}, start=11, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Nan Lei, Yuan-Ming Li, Ling-An Zeng, Liang Xu, Zhi-Wei Xia, Hui-Wen Huang, \textbf{Fa-Ting Hong}{\textsuperscript{\Letter}}, Wei-Shi Zheng,
+    ``PhysiGen: Integrating Collision-Aware Physical Constraints for High-Fidelity Human-Human Interaction Generation'', \textbf{\textit{ICASSP} 2026}.
+
+\end{enumerate}
+\end{rSection}
+
+\begin{rSection}{Co-authored Publications on Video}
+\pubtopic{topicVG}{Human-centric Video \& Visual Understanding / Generation}
+\begin{enumerate}[label={\color{topicVG}[C\arabic*]}, start=1, leftmargin=26pt, labelsep=5pt, itemsep=0pt, parsep=0pt, topsep=0pt]
+    \item Haiyang Liu, Zhan Xu, \textbf{Fa-Ting Hong}, Hsin-Ping Huang, Yi Zhou, Yang Zhou,
+    ``Video Motion Graphs'', \textbf{\textit{ICCV} 2025}.
+
+    \item Shuling Zhao, \textbf{Fa-Ting Hong}, Xianshui Huang, Dan Xu,
+    ``Synergizing Motion and Appearance: Multi-Scale Compensatory Codebooks for Talking Head Video Generation'', \textbf{\textit{CVPR} 2025}.
+
+    \item Zunnan Xu, Zhentao Yu, Zixiang Zhou, Jun Zhou, Xiaoyu Jin, \textbf{Fa-Ting Hong}, Xiaozhong Ji, Junwei Zhu, Chengfei Cai, Shiyu Tang, Qin Lin, Xiu Li, Qinglin Lu,
+    ``HunyuanPortrait: Implicit Condition Control for Enhanced Portrait Animation'', \textbf{\textit{CVPR} 2025}.
+
+    \item Yu Wang, Yunfei Liu, \textbf{Fa-Ting Hong}, Meng Cao, Lijian Lin, Yu Li,
+    ``AnyTalk: Multi-modal Driven Multi-domain Talking Head Generation'', \textbf{\textit{AAAI} 2025}.
+
+    \item Jia-Run Du, Jia-Chang Feng, Kun-Yu Lin, \textbf{Fa-Ting Hong}, Xiao-Ming Wu, Zhongang Qi, Ying Shan, Wei-Shi Zheng,
+    ``Weakly-Supervised Temporal Action Localization by Progressive Complementary Learning'', \textbf{\textit{IEEE TCSVT} 2024}.
+
+    \item Jia-Chang Feng, \textbf{Fa-Ting Hong}, and Wei-Shi Zheng,
+    ``MIST: Multiple Instance Self-Training Framework for Video Anomaly Detection'', \textbf{\textit{CVPR} 2021}.
+
+    \item Ling-An Zeng, \textbf{Fa-Ting Hong}, Wei-Shi Zheng, Qi-Zhi Yu, Wei Zeng, Yao-Wei Wang, and Jian-Huang Lai,
+    ``Hybrid Dynamic-static Context-aware Attention Network for Action Assessment in Long Videos'', \textbf{\textit{ACM MM} 2020}.
+
+\end{enumerate}
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	AWARDS
+%----------------------------------------------------------------------------------------
+\needspace{6\baselineskip}
+\begin{rSection}{Patents}
+
+\begin{itemize}[leftmargin=18pt]
+\setlength{\itemsep}{-2pt}
+    \item \textbf{Pose Correlation Based Digital Video Generation}. Zhixin Shu, Zhan Xu, Yang Zhou, \textbf{\mbox{Fa-Ting} Hong}, Duygu Ceylan. US Patent, Docket No. P13394-US (Filed).
+    \item \textbf{An Image/Video Important People Detection Method Combining Deep Learning and Relationship Modeling}. Wei-Shi Zheng, \textbf{Fa-Ting Hong}. CN Patent CN111008558B (Granted).
+\end{itemize}
+
+\end{rSection}
+
+
+\begin{rSection}{AWARDS}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-3pt}
+    \item HKUST CSE Best PhD Dissertation Award, Honorable Mention, 2025--26
+    \item National Scholarship for Graduate Students, Ministry of Education of China, 2020
+    \item National Scholarship (1/80), Ministry of Education of China, 2017
+    % \item Chinese National Inspirational Scholarship(5/80), by Minister of Education of China, 2016
+    % \item Chinese National Inspirational Scholarship(3/80), by Minister of Education of China, 2015
+
+\end{itemize}
+
+\end{rSection}
+
+\begin{rSection}{Academic Services}
+
+\begin{itemize}[leftmargin=10pt]
+\setlength{\itemsep}{-3pt}
+    \item Reviewer: IEEE TPAMI, IJCV, IEEE TMM, CVPR, ICCV, ECCV, NeurIPS, ICLR, SIGGRAPH Asia, ACM MM
+\end{itemize}
+
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+%	Project
+%----------------------------------------------------------------------------------------
+
+% \begin{rSection}{Project}
+% {\bf National Innovation and Entrepreneurship Project} \hfill {\em 2016 - 2018}
+% \begin{itemize}[leftmargin=18pt]
+% \setlength{\itemsep}{-5pt}
+%     \item Title: Research on Robot Autonomous Navigation Based on Lidar
+%     \item Role: Team leader \& Main Contributor
+%     \item Project Acceptance Evaluation: Excellent.
+% \end{itemize}
+
+% {\bf Alibaba - HKUST Research Collaboration } \hfill {\em 2021 - 2022}
+% \begin{itemize}[leftmargin=18pt]
+% \setlength{\itemsep}{-5pt}
+%     \item Project Title: Depth-Aware Talking Head Video Generation
+%     \item Role: Main Contributor
+%     \item Distributed: A CVPR 2022 paper.
+% \end{itemize}
+
+% {\bf Adobe - HKUST Research Collaboration } \hfill {\em 2024.05 - 2024.08}
+% \begin{itemize}[leftmargin=18pt]
+% \setlength{\itemsep}{-5pt}
+%     \item Project Title: Free-viewpoint Human Animation
+%     \item Role: Main Contributor
+%     \item Distributed: A CVPR 2025 paper.
+% \end{itemize}
+
+% {\bf Tencent Hunyuan - HKUST Research Collaboration } \hfill {\em 2024.05 - 2024.08}
+% \begin{itemize}[leftmargin=18pt]
+% \setlength{\itemsep}{-5pt}
+%     \item Project Title: Audio-visual Controlled Video Diffusion for Talking Head Generation
+%     \item Role: Main Contributor
+%     \item Distributed: A ICCV 2025 paper.
+% \end{itemize}
+
+% {\bf Meta - HKUST Research Collaboration } \hfill {\em 2025.06 - 2025.12}
+% \begin{itemize}[leftmargin=18pt]
+% \setlength{\itemsep}{-5pt}
+%     \item Project Title: 4D Real-Time Avatar Neural Renderer
+%     \item Role: Main Contributor
+%     \item Expected Distributed: A CVPR 2026 paper.
+% \end{itemize}
+
+% \end{rSection}
+
+
+% \begin{rSection}{Skills}
+% \begin{itemize}[leftmargin=10pt]
+% \setlength{\itemsep}{-5pt}
+% \item \textbf{Program Languages:}
+% most experienced with Python; experienced with C++; \LaTeX
+% \item \textbf{Operating Systems:}
+% Linux (Ubuntu, CentOS), Windows, MacOS
+% \item \textbf{Development Platforms and Softwares:}
+% Pytorch 
+% \item \textbf{Miscellaneous:}
+% software configuration management, strong verbal and written
+% communication skills, excellent troubleshooting and debugging skills
+% \item \textbf{Languages:}
+% Mandarin(native), Cantonese(fluent), English(fluent)
+% \end{itemize}
+% \end{rSection}
+
+\begin{rSection}{More Details}
+For more information, please visit my personal page at: https://harlanhong.github.io.
+\end{rSection}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
