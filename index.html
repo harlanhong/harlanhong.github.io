@@ -1693,6 +1693,16 @@
         <div class="row my-3">
             <div class="col-6">
                 <small class="text-muted">Last updated: <script>document.write(new Date(document.lastModified).toISOString().slice(0,10));</script></small>
+                <img id="visitor-badge" class="ml-2 align-middle" alt="Visitors">
+                <script>
+                (function () {
+                    var params = new URLSearchParams(location.search);
+                    if (params.has('nocount')) localStorage.setItem('skipVisitCount', '1');
+                    if (params.has('count')) localStorage.removeItem('skipVisitCount');
+                    var skip = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || localStorage.getItem('skipVisitCount');
+                    document.getElementById('visitor-badge').src = 'https://visitor-badge.laobi.icu/badge?page_id=harlanhong.github.io&left_text=Visitors&left_color=%234b5563&right_color=%231F5FA8' + (skip ? '&query_only=true' : '');
+                })();
+                </script>
             </div>
             <div class="col-6">
                 <div class="float-right text-muted">Designed by <a href="https://lightchaserx.github.io/">Zhixiang Wang</a> and <a href="https://luost.me">luost26</a></div>
