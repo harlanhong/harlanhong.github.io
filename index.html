@@ -143,6 +143,77 @@
             transform: none;
             box-shadow: none;
         }
+        .pub-item {
+            transition: background 0.15s ease;
+        }
+        .pub-item:hover {
+            background: #f9fafb;
+        }
+        .pub-item h5 {
+            font-size: 1.05rem;
+            font-weight: 600 !important;
+            line-height: 1.4;
+            color: #1f2937;
+            margin-bottom: 0.3rem !important;
+        }
+        .pub-item h5 + p {
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        .pub-item .video-container {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .pub-item a[style*="247, 137, 35"] {
+            display: inline-block;
+            margin: 4px 4px 2px 0;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #B5561C !important;
+            background: #fbeee3;
+        }
+        .pub-item[data-status="preprint"] a[style*="247, 137, 35"] {
+            color: #4b5563 !important;
+            background: #eef0f3;
+        }
+        .pub-award {
+            display: inline-block;
+            margin-left: 2px;
+            padding: 1px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #b91c1c;
+            background: #fde8e8;
+        }
+        .pub-item .abstract-links {
+            font-size: 0;
+            margin-top: 6px;
+        }
+        .pub-item .abstract-links > a[target] {
+            display: inline-block;
+            margin: 0 6px 4px 0;
+            padding: 2px 10px;
+            border: 1px solid #c9dbef;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #1F5FA8;
+            background: #f3f8fd;
+            text-decoration: none;
+            transition: background 0.15s ease, color 0.15s ease;
+        }
+        .pub-item .abstract-links img {
+            margin-right: 6px;
+        }
+        .pub-item .abstract-links > a[target]:hover {
+            color: #fff;
+            background: #1F5FA8;
+            border-color: #1F5FA8;
+        }
         .exp-item {
             display: flex;
             align-items: flex-start;
@@ -1040,7 +1111,7 @@
         <p class="mt-0 mb-0 small">
          <span class="comma text-body"><strong>Fa-Ting Hong, </strong></span>
         Zhan Xu, Haiyang Liu, Qinjie Lin, Luchuan Song, Zhixin Shu, Yang Zhou, Duygu Ceylan, Dan Xu
-        <p class="mt-0 mb-0 small"><a style="color:rgb(247, 137, 35)">CVPR</a> 2025 (<a style="color:rgb(247, 137, 35)">Highlight, 13.5% of accepted papers</a>)</p> 
+        <p class="mt-0 mb-0 small"><a style="color:rgb(247, 137, 35)">CVPR</a> 2025 <span class="pub-award">Highlight, 13.5% of accepted papers</span></p> 
         <p class="mt-0 mb-0 small text-muted"></p>
         <p class="small pb-0 mb-0 lh-0 text-muted abstract-links">
             <a target="_blank" href="https://github.com/harlanhong/FVHuman">Code</a> |
