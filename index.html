@@ -114,6 +114,74 @@
             transform: none;
             box-shadow: none;
         }
+        .exp-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 1rem;
+        }
+        .exp-item + .exp-item {
+            border-top: 1px solid #dee2e6;
+        }
+        .exp-logo {
+            flex: 0 0 46px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border: 1px solid #eceef1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .exp-logo img {
+            max-width: 82%;
+            max-height: 82%;
+            object-fit: contain;
+        }
+        .exp-main {
+            flex: 1 1 auto;
+            min-width: 0;
+        }
+        .exp-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 4px 10px;
+        }
+        .exp-org {
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: #2d353c;
+        }
+        .exp-team {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .exp-date {
+            margin-left: auto;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6c757d;
+            white-space: nowrap;
+        }
+        .exp-role {
+            margin-top: 6px;
+            font-size: 0.92rem;
+            color: #333;
+        }
+        .exp-mentor {
+            margin-top: 3px;
+            font-size: 0.82rem;
+            color: #6c757d;
+        }
+        @media (max-width: 575.98px) {
+            .exp-date {
+                margin-left: 0;
+                flex-basis: 100%;
+            }
+        }
     </style>
    
 </head>
@@ -1237,164 +1305,74 @@
     <h4 class="border-bottom border-gray p-3 mb-0">
         <i class="fas"></i> Intern Experience
    </h4>
-<ul class="timeline">
+<div class="exp-list">
 
-    <li>
-        <div class="timeline-time">
-           <span class="date">23.06 &#8212; 05.12</span>
-           <span class="time">2025</span>
+    <div class="exp-item">
+        <div class="exp-logo"><img src="assets/images/meta.png" alt="Meta"></div>
+        <div class="exp-main">
+            <div class="exp-head">
+                <span class="exp-org">Meta</span>
+                <span class="exp-team">RL Research Gemini, Zurich</span>
+                <span class="exp-date">Jun 23 &ndash; Dec 5, 2025</span>
+            </div>
+            <div class="exp-role">4D Avatar</div>
+            <div class="exp-mentor">Mentor: Aljaz Bozic</div>
         </div>
-        <div class="timeline-icon">
-           <a href="javascript:;">&nbsp;</a>
-        </div>
-        <div class="timeline-body">
-           <div class="timeline-header">
-              <span class="userimage"><img src="assets/images/meta.png"></span>
-              <span class="username">Meta</span>
-              <span class="text-muted small">&ndash; RL Research Gemini, Zurich </span>
-           </div>
-           <div class="timeline-content">
-             <p class="lead">
-                <a class="text-muted small" target="_blank" href=""> 4D Avatar
-                </a>
-                 <br>
-                <a class="text-muted small" target="_blank" href=""> 
-                    mentors: Aljaz Bozic
-                </a>
-              </p>
-           </div>
-     </li>
-    
-     <li>
-        <!-- begin timeline-time -->
-        <div class="timeline-time">
-           <span class="date">1.11 &#8212; 19.03</span>
-           <span class="time">2024-2025</span>
-        </div>
-        <!-- end timeline-time -->
-        <!-- begin timeline-icon -->
-        <div class="timeline-icon">
-           <a href="javascript:;">&nbsp;</a>
-        </div>
-        <!-- end timeline-icon -->
-        <!-- begin timeline-body -->
-        <div class="timeline-body">
-           <div class="timeline-header">
-              <span class="userimage"><img src="assets/images/tencent.png"></span>
-              <span class="username">Tencent</span>
-              <span class="text-muted small">&ndash; Hunyuan Lab </span>
-           </div>
-           <div class="timeline-content">
-             <p class="lead">
-                 <!-- <i class="fa fa-quote-left fa-fw pull-left"></i> -->
-                <a class="text-muted small" target="_blank" href=""> Digital human video generation,
-                </a>
-                <!-- <br> -->
-                 <br>
-                 <!-- <i class="fa fa-quote-right fa-fw pull-right"></i> -->
-                <a class="text-muted small" target="_blank" href=""> 
-                    <!-- mentors: Zixiang Zhou -->
-                    <!-- <a href="https://yzhou359.github.io/" style="color:rgb(0, 0, 0); font-size: 13px;">Yang Zhou</a>,
-                    <a href="https://people.cs.umass.edu/~zhanxu/" style="color:rgb(0, 0, 0); font-size: 13px;">Zhan Xu</a>, 
-                    <a href="https://zhouyisjtu.github.io/" style="color:rgb(0, 0, 0); font-size: 13px;">Yi Zhou</a>. -->
-                </a>
-                 <!-- <i class="fa fa-quote-right fa-fw pull-right"></i> -->
-              </p>
-           </div>
-     </li>
+    </div>
 
-     
-    <li>
-       <!-- begin timeline-time -->
-       <div class="timeline-time">
-          <span class="date">24.5 &#8212; 24.8</span>
-          <span class="time">2024</span>
-       </div>
-       <!-- end timeline-time -->
-       <!-- begin timeline-icon -->
-       <div class="timeline-icon">
-          <a href="javascript:;">&nbsp;</a>
-       </div>
-       <!-- end timeline-icon -->
-       <!-- begin timeline-body -->
-       <div class="timeline-body">
-          <div class="timeline-header">
-             <span class="userimage"><img src="assets/images/adobe.png"></span>
-             <span class="username">Adobe Research</span>
-             <span class="text-muted small">&ndash; Media Intelligence Lab, San Jose </span>
-          </div>
-          <div class="timeline-content">
-            <p class="lead">
-                <!-- <i class="fa fa-quote-left fa-fw pull-left"></i> -->
-               <a class="text-muted small" target="_blank" href=""> human video generation,
-               </a>
-               <br>
-                <!-- <i class="fa fa-quote-right fa-fw pull-right"></i> -->
-               <a class="text-muted small" target="_blank" href=""> 
-                   mentors: Zhan Xu, Yang Zhou, Zhixin Shu, Duygu Ceylan
-                   <!-- <a href="https://yzhou359.github.io/" style="color:rgb(0, 0, 0); font-size: 13px;">Yang Zhou</a>,
-                   <a href="https://people.cs.umass.edu/~zhanxu/" style="color:rgb(0, 0, 0); font-size: 13px;">Zhan Xu</a>, 
-                   <a href="https://zhouyisjtu.github.io/" style="color:rgb(0, 0, 0); font-size: 13px;">Yi Zhou</a>. -->
-               </a>
-                <!-- <i class="fa fa-quote-right fa-fw pull-right"></i> -->
-             </p>
-          </div>
-    </li>
+    <div class="exp-item">
+        <div class="exp-logo"><img src="assets/images/tencent.png" alt="Tencent"></div>
+        <div class="exp-main">
+            <div class="exp-head">
+                <span class="exp-org">Tencent</span>
+                <span class="exp-team">Hunyuan Lab, Shenzhen</span>
+                <span class="exp-date">Nov 1, 2024 &ndash; Mar 19, 2025</span>
+            </div>
+            <div class="exp-role">Digital human video generation</div>
+        </div>
+    </div>
+
+    <div class="exp-item">
+        <div class="exp-logo"><img src="assets/images/adobe.png" alt="Adobe Research"></div>
+        <div class="exp-main">
+            <div class="exp-head">
+                <span class="exp-org">Adobe Research</span>
+                <span class="exp-team">Media Intelligence Lab, San Jose</span>
+                <span class="exp-date">May &ndash; Aug 2024</span>
+            </div>
+            <div class="exp-role">Human video generation</div>
+            <div class="exp-mentor">Mentors: Zhan Xu, Yang Zhou, Zhixin Shu, Duygu Ceylan</div>
+        </div>
+    </div>
 <!--
-    <li>
-        <div class="timeline-time">
-           <span class="date">1.9 &#8212; 1.4</span>
-           <span class="time">2023/2024</span>
+    <div class="exp-item">
+        <div class="exp-logo"><img src="assets/images/idea.jpeg" alt="IDEA"></div>
+        <div class="exp-main">
+            <div class="exp-head">
+                <span class="exp-org">IDEA</span>
+                <span class="exp-team">Vistring Lab, Shenzhen</span>
+                <span class="exp-date">Sep 2023 &ndash; Apr 2024</span>
+            </div>
+            <div class="exp-role">Digital human video generation</div>
+            <div class="exp-mentor">Mentors: Yu Li, Yunfei Liu</div>
         </div>
-        <div class="timeline-icon">
-           <a href="javascript:;">&nbsp;</a>
-        </div>
-        <div class="timeline-body">
-           <div class="timeline-header">
-              <span class="userimage"><img src="assets/images/idea.jpeg"></span>
-              <span class="username">IDEA (粤港澳大湾区数字经济研究院)</span>
-              <span class="text-muted small">&ndash; Vistring Lab </span>
-           </div>
-           <div class="timeline-content">
-              <p class="lead">
-                 <a class="text-muted small" target="_blank" href=""> Digital human video generation,
-                </a>
-                <br>
-                <a class="text-muted small" target="_blank" href=""> 
-                    mentors: Yu Li, Yunfei Liu
-                </a>
-              </p>
-           </div>
-     </li>
+    </div>
     -->
-<!-- 
-    <li>
-      
-       <div class="timeline-time">
-          <span class="date">October &#8212;</span>
-          <span class="time">2021</span>
-       </div>
-       
-       <div class="timeline-icon">
-          <a href="javascript:;">&nbsp;</a>
-       </div>
-     
-       <div class="timeline-body">
-          <div class="timeline-header">
-             <span class="userimage"><img src="assets/misc/utokyo.png"></span>
-             <span class="username">The University of Tokyo</span>
-             <span class="pull-right text-muted small">&ndash; doctoral student</span>
-          </div>
-          <div class="timeline-content">
-             <p class="lead">
-               
-                <a class="text-body" target="_blank" href="http://www.satoh-lab.nii.ac.jp/index.html">Satoh-Lab</a>
-               
-             </p>
-          </div>
-    </li> -->
-  </ul>
-</div> 
+<!--
+    <div class="exp-item">
+        <div class="exp-logo"><img src="assets/misc/utokyo.png" alt="The University of Tokyo"></div>
+        <div class="exp-main">
+            <div class="exp-head">
+                <span class="exp-org">The University of Tokyo</span>
+                <span class="exp-team">Satoh-Lab</span>
+                <span class="exp-date">Oct 2021</span>
+            </div>
+            <div class="exp-role">Doctoral student</div>
+        </div>
+    </div>
+    -->
+</div>
+</div>
 
 <!-- ######################### Academic Services ######################### -->
 <div class="my-3 p-0 bg-white shadow-sm rounded-sm">
