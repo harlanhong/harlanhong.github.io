@@ -25,6 +25,73 @@
             background: linear-gradient(to right, #bbb, #888, #bbb);
             margin: 20px 0;
         }
+        .pub-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 14px 16px 14px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .pub-chip {
+            -webkit-appearance: none;
+            appearance: none;
+            font-family: inherit;
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 0.84rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            line-height: 1.3;
+            cursor: pointer;
+            transition: background .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease;
+        }
+        .pub-chip:focus {
+            outline: none;
+        }
+        .pub-chip:focus-visible {
+            box-shadow: 0 0 0 3px rgba(31, 95, 168, 0.22);
+        }
+        .pub-chip-vg {
+            color: #1F5FA8;
+            background: #eef5fc;
+        }
+        .pub-chip-mo {
+            color: #9a4a16;
+            background: #f8eee4;
+        }
+        .pub-chip-ot {
+            color: #4b5563;
+            background: #f3f4f6;
+        }
+        .pub-chip:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(15, 23, 42, 0.08);
+        }
+        .pub-chip-vg:hover { background: #e2eef9; }
+        .pub-chip-mo:hover { background: #f3e4d5; }
+        .pub-chip-ot:hover { background: #eaeaee; }
+        .pub-chip.active.pub-chip-vg,
+        .pub-chip-vg.active {
+            background: #1F5FA8;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(31, 95, 168, 0.28);
+        }
+        .pub-chip.active.pub-chip-mo,
+        .pub-chip-mo.active {
+            background: #B5561C;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(181, 86, 28, 0.28);
+        }
+        .pub-chip.active.pub-chip-ot,
+        .pub-chip-ot.active {
+            background: #4b5563;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(75, 85, 99, 0.24);
+        }
+        .pub-chip.active:hover {
+            transform: none;
+        }
         .pub-subhead {
             padding: 0.85rem 1rem 0.15rem;
             margin: 0;
@@ -33,21 +100,19 @@
             color: #333;
         }
         .pub-topic {
-            padding: 0.35rem 1rem 0.45rem;
+            padding: 0.2rem 1rem 0.35rem;
             margin: 0;
-            font-size: 0.9rem;
-            font-weight: 600;
         }
-        .pub-topic-vg { color: #1F5FA8; }
-        .pub-topic-mo { color: #B5561C; }
-        .pub-topic::before {
-            content: "";
-            display: inline-block;
-            width: 3px;
-            height: 0.9em;
-            margin-right: 8px;
-            vertical-align: -1px;
-            background: currentColor;
+        .pub-topic .pub-chip {
+            cursor: default;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            box-shadow: none;
+            transform: none;
+        }
+        .pub-topic .pub-chip:hover {
+            transform: none;
+            box-shadow: none;
         }
     </style>
    
@@ -243,12 +308,21 @@
 <!-- ######################### Publications ######################### -->
 <div id="publications" class="my-3 p-0 bg-white shadow-sm rounded-sm">
     <h4 class="border-bottom border-gray p-3 mb-0">
+        <i class="fas"></i> Publications
+   </h4>
+    <div class="pub-filters">
+        <button type="button" class="pub-chip pub-chip-vg" data-filter="first-vg">First / Corr. · Video</button>
+        <button type="button" class="pub-chip pub-chip-mo" data-filter="first-mo">First / Corr. · Motion</button>
+        <button type="button" class="pub-chip pub-chip-vg" data-filter="co-vg">Co-authored · Video</button>
+        <button type="button" class="pub-chip pub-chip-ot" data-filter="co-ot">Other Co-authored</button>
+    </div>
+    <h4 class="border-bottom border-gray p-3 mb-0 pub-group-title">
         <i class="fas"></i> Publications as First / Corresponding Author
    </h4>
     <div class="pub-subhead">Preprints & Under Review</div>
-    <div class="pub-topic pub-topic-vg">Human-centric Video & Visual Understanding / Generation</div>
+    <div class="pub-topic"><span class="pub-chip pub-chip-vg">Video</span></div>
 
-    <div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background:#f3f4f6;"></div>
         </div>
@@ -263,8 +337,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2608.18832v1/framework.png" class="lazy w-100 rounded-sm">
@@ -283,8 +356,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2605.25751/x1.png" class="lazy w-100 rounded-sm">
@@ -302,8 +374,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2610.13503v1/teaser.png" class="lazy w-100 rounded-sm">
@@ -321,8 +392,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/DreamHead/framework.png" class="lazy w-100 rounded-sm">
@@ -357,8 +427,7 @@
             <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="preprint" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/OSTNet/framework.png" class="lazy w-100 rounded-sm">
@@ -393,10 +462,9 @@
             <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
         </div>
     </div>
+    <div class="pub-topic"><span class="pub-chip pub-chip-mo">Motion</span></div>
 
-    <div class="pub-topic pub-topic-mo">Human-centric Motion</div>
-
-    <div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="mo" data-status="preprint" data-group="first-mo">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background:#f3f4f6;"></div>
         </div>
@@ -411,8 +479,7 @@
             </p>
         </div>
     </div>
-
-    <div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="mo" data-status="preprint" data-group="first-mo">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2610.01517v1/teasear.png" class="lazy w-100 rounded-sm">
@@ -435,8 +502,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="mo" data-status="preprint" data-group="first-mo">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2605.22631/x1.png" class="lazy w-100 rounded-sm">
@@ -454,11 +520,10 @@
             </p>
         </div>
     </div>
-
     <div class="pub-subhead">Peer-reviewed Papers</div>
-    <div class="pub-topic pub-topic-vg">Human-centric Video & Visual Understanding / Generation</div>
+    <div class="pub-topic"><span class="pub-chip pub-chip-vg">Video</span></div>
 
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="Projects/iptalker/iptalker.jpg" class="lazy w-100 rounded-sm">
@@ -492,8 +557,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="publications/actalker/assets/pics/framework.png" class="lazy w-100 rounded-sm">
@@ -528,8 +592,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="publications/fvhuman/figures/fvhumanframework.jpg" class="lazy w-100 rounded-sm">
@@ -564,8 +627,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/dagan++/framework.png" class="lazy w-100 rounded-sm">
@@ -599,8 +661,7 @@
             <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/MCNet/framework.png" class="lazy w-100 rounded-sm">
@@ -632,8 +693,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/dagan/framework2.jpg" class="lazy w-100 rounded-sm">
@@ -665,8 +725,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/co2net/framework.jpg" class="lazy w-100 rounded-sm">
@@ -698,8 +757,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/MINI-NET/1880-framework.jpg" class="lazy w-100 rounded-sm">
@@ -731,8 +789,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/Learning-to-Rank/1842-framework.jpg" class="lazy w-100 rounded-sm">
@@ -764,8 +821,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="vg" data-status="peer" data-group="first-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/POINT/FrameworkDetail.jpg" class="lazy w-100 rounded-sm">
@@ -797,10 +853,9 @@
             </p>
         </div>
     </div>
+    <div class="pub-topic"><span class="pub-chip pub-chip-mo">Motion</span></div>
 
-    <div class="pub-topic pub-topic-mo">Human-centric Motion</div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="first" data-topic="mo" data-status="peer" data-group="first-mo">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="https://arxiv.org/html/2605.00517v1/x1.png" class="lazy w-100 rounded-sm">
@@ -819,13 +874,12 @@
         </p>
     </div>
     </div>
-
-    <h4 class="border-bottom border-gray p-3 mb-0">
+    <h4 class="border-bottom border-gray p-3 mb-0 pub-group-title">
         <i class="fas"></i> Co-authored Publications on Video
    </h4>
-    <div class="pub-topic pub-topic-vg">Human-centric Video & Visual Understanding / Generation</div>
+    <div class="pub-topic"><span class="pub-chip pub-chip-vg">Video</span></div>
 
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <video class="w-100 rounded-sm" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;" src="Projects/VideoMotionGraphs/res_7_audio_6.mp4" muted loop autoplay playsinline></video>
@@ -845,8 +899,7 @@
         </p>
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="Projects/SynMA/overview.jpg" class="lazy w-100 rounded-sm">
@@ -881,8 +934,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="Projects/hunyuanportrait.png" class="lazy w-100 rounded-sm">
@@ -917,8 +969,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/AnyTalk.png" class="lazy w-100 rounded-sm">
@@ -953,8 +1004,7 @@
             <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
         </div>
         </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/HIM/framework.jpg" class="lazy w-100 rounded-sm">
@@ -989,8 +1039,7 @@
             <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/MIST/framework.jpg" class="lazy w-100 rounded-sm">
@@ -1022,8 +1071,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="vg" data-status="peer" data-group="co-vg">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/ACTION-NET/pipeline.jpg" class="lazy w-100 rounded-sm">
@@ -1055,12 +1103,11 @@
             </p>
         </div>
     </div>
-
-    <h4 class="border-bottom border-gray p-3 mb-0">
+    <h4 class="border-bottom border-gray p-3 mb-0 pub-group-title">
         <i class="fas"></i> Other Co-authored Publications
    </h4>
 
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="ot" data-status="preprint" data-group="co-ot">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2610.28431v1/Figures/framework.png" class="lazy w-100 rounded-sm">
@@ -1078,8 +1125,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="ot" data-status="preprint" data-group="co-ot">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2610.26043v2/cover.png" class="lazy w-100 rounded-sm">
@@ -1098,8 +1144,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="mo" data-status="preprint" data-group="co-ot">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="https://arxiv.org/html/2610.02867v1/teaser3.png" class="lazy w-100 rounded-sm">
@@ -1118,8 +1163,7 @@
             </p>
         </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="ot" data-status="peer" data-group="co-ot">
     <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
         <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
             <img src="Projects/FireEdit_model.jpg" class="lazy w-100 rounded-sm">
@@ -1154,8 +1198,7 @@
         <!-- <p class="mt-0 mb-0 small text-muted">We build a pipeline to use pre-trained 3D GANs for correcting face perspective distortion in close-up portraits.</p> -->
     </div>
     </div>
-
-<div class="row no-gutters position-relative border-bottom border-gray">
+<div class="row no-gutters position-relative border-bottom border-gray pub-item" data-role="co" data-topic="ot" data-status="peer" data-group="co-ot">
         <div class="col-md-3 col-xl-3 mb-md-0 p-md-3">
             <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
                 <img src="Projects/PRN/fig_pipeline.jpg" class="lazy w-100 rounded-sm">
@@ -1187,7 +1230,6 @@
             </p>
         </div>
     </div>
-
 </div>
 
 <!-- ######################### Intern Experience ######################### -->
@@ -1458,5 +1500,49 @@
     }
 </script>
 
+
+
+<script>
+(function () {
+    var root = document.getElementById('publications');
+    if (!root) return;
+    var chips = root.querySelectorAll('.pub-filters .pub-chip[data-filter]');
+    var items = root.querySelectorAll('.pub-item');
+    function headLevel(el) {
+        if (el.classList.contains('pub-group-title')) return 1;
+        if (el.classList.contains('pub-subhead')) return 2;
+        if (el.classList.contains('pub-topic')) return 3;
+        return 0;
+    }
+    function apply(filter) {
+        chips.forEach(function (c) {
+            c.classList.toggle('active', filter && c.getAttribute('data-filter') === filter);
+        });
+        items.forEach(function (item) {
+            item.style.display = (!filter || item.getAttribute('data-group') === filter) ? '' : 'none';
+        });
+        root.querySelectorAll('.pub-group-title, .pub-subhead, .pub-topic').forEach(function (h) {
+            var n = h.nextElementSibling;
+            var any = false;
+            while (n) {
+                var lv = headLevel(n);
+                if (lv) {
+                    if (lv <= headLevel(h)) break;
+                } else if (n.classList.contains('pub-item') && n.style.display !== 'none') {
+                    any = true;
+                }
+                n = n.nextElementSibling;
+            }
+            h.style.display = (!filter || any) ? '' : 'none';
+        });
+    }
+    root.addEventListener('click', function (e) {
+        var btn = e.target.closest('.pub-filters .pub-chip[data-filter]');
+        if (!btn) return;
+        var filter = btn.getAttribute('data-filter');
+        apply(btn.classList.contains('active') ? '' : filter);
+    });
+})();
+</script>
 
 </html>
