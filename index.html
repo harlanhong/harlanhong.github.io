@@ -92,6 +92,35 @@
         .pub-chip.active:hover {
             transform: none;
         }
+        .pub-filters {
+            align-items: center;
+            background: #fafbfc;
+        }
+        .pub-filter-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-right: 2px;
+        }
+        .pub-filters .pub-chip {
+            border: 1px solid #d1d5db;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+        }
+        .pub-filters .pub-chip-vg { border-color: #b9d3ee; }
+        .pub-filters .pub-chip-mo { border-color: #e8c7a8; }
+        .pub-filters .pub-chip.active { border-color: transparent; }
+        .pub-chip-all {
+            color: #1f2937;
+            background: #fff;
+        }
+        .pub-chip-all:hover { background: #f3f4f6; }
+        .pub-chip-all.active {
+            background: #1f2937;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(31, 41, 55, 0.25);
+        }
         .pub-subhead {
             padding: 0.85rem 1rem 0.15rem;
             margin: 0;
@@ -600,6 +629,8 @@
         <i class="fas"></i> Publications
    </h4>
     <div class="pub-filters">
+        <span class="pub-filter-label"><i class="fas fa-filter"></i> Filter</span>
+        <button type="button" class="pub-chip pub-chip-all active" data-filter="all">All</button>
         <button type="button" class="pub-chip pub-chip-vg" data-filter="first-vg">First / Corr. · Video Generation/Understanding</button>
         <button type="button" class="pub-chip pub-chip-mo" data-filter="first-mo">First / Corr. · Human-centric Motion</button>
         <button type="button" class="pub-chip pub-chip-vg" data-filter="co-vg">Co-authored · Video Generation/Understanding</button>
@@ -1725,7 +1756,7 @@
     }
     function apply(filter) {
         chips.forEach(function (c) {
-            c.classList.toggle('active', filter && c.getAttribute('data-filter') === filter);
+            c.classList.toggle('active', c.getAttribute('data-filter') === (filter || 'all'));
         });
         items.forEach(function (item) {
             item.style.display = (!filter || item.getAttribute('data-group') === filter) ? '' : 'none';
@@ -1749,7 +1780,7 @@
         var btn = e.target.closest('.pub-filters .pub-chip[data-filter]');
         if (!btn) return;
         var filter = btn.getAttribute('data-filter');
-        apply(btn.classList.contains('active') ? '' : filter);
+        apply(filter === 'all' || btn.classList.contains('active') ? '' : filter);
     });
 })();
 </script>
